@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Aquality.Selenium.Core;
 
-namespace ExampleProject.Selenium
+namespace ExampleProject.mytask.Pages
 {
-    internal class Class1
+    internal class MainPage
     {
-
     }
 }
