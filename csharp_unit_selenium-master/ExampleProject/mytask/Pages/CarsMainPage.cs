@@ -1,0 +1,28 @@
+﻿using System;
+
+using AQF = Aquality.Selenium.Forms;
+using OpenQA.Selenium;
+using Aquality.Selenium.Elements.Interfaces;
+
+namespace ExampleProject.mytask.Pages
+{
+    internal class CarsMainPage : AQF.Form
+    {
+        private const string PageName = "Cars - Main Page";
+        private const string uniqueElement = "Popular categories";
+        private ILink navigationLink(string navigation) => ElementFactory.GetLink(
+            By.XPath(string.Format(LocatorConstants.PreciseTextLocator, navigation)), "Navigation link");
+
+        public CarsMainPage() : base(By.XPath(string.Format(LocatorConstants.PartialTextLocator, uniqueElement)), PageName)
+        {
+        }
+
+        public void ClickNavigationLink(string navigationName)
+        {
+            navigationLink(navigationName).Click();
+        }
+
+
+
+    }
+}

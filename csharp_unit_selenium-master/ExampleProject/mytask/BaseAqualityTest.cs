@@ -2,20 +2,32 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using Aquality.Selenium;
-using Aquality.Selenium.Browsers;
+using NUnit.Framework;
+using AQ = Aquality.Selenium;
+using AQB = Aquality.Selenium.Browsers;
+using AQBS = Aquality.Selenium.Browsers.AqualityServices;
+
 
 namespace ExampleProject.Selenium
 {
     internal class BaseAqualityTest
+
     {
-       public void firstTest()
+        protected AQB.Browser browser = AQBS.Browser;
+        protected static readonly string url = "http://www.cars.com";
+
+        [SetUp]
+       public void Setup()
         {
-            var browser = AqualityServices.Browser;
             browser.Maximize();
-            browser.GoTo("http://www.cars.com");
+            browser.GoTo(url);
             browser.WaitForPageToLoad();
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            browser.Quit();
         }
     }
 }
