@@ -3,6 +3,7 @@
 using AQF = Aquality.Selenium.Forms;
 using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
+using ExampleProject.mytask.Constants;
 
 namespace ExampleProject.mytask.Pages
 {

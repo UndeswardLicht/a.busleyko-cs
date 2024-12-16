@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using AQF = Aquality.Selenium.Forms;
-using AQEI = Aquality.Selenium.Elements.Interfaces;
 using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
+using Aquality.Selenium.Core.Elements;
+using ExampleProject.mytask.Models;
+using ExampleProject.mytask.Constants;
 
 namespace ExampleProject.mytask.Pages
 {
@@ -17,8 +17,11 @@ namespace ExampleProject.mytask.Pages
         private By Combobox = By.XPath(string.Format(LocatorConstants.PreciseClassLocator, "sds-field-group field-group-melded"));
         private IButton ResearchButton = ElementFactory.GetButton(By.XPath(string.Format(
             LocatorConstants.PreciseClassLocator, "sds-field-group field-group-melded")), "Research button");
+        private By MakeField = By.XPath(string.Format(LocatorConstants.PreciseIdLocator, "make-select"));
+        private By ModelField = By.XPath(string.Format(LocatorConstants.PreciseIdLocator, "model-select"));
+        private By YearField = By.XPath(string.Format(LocatorConstants.PreciseIdLocator, "year-select"));
 
-
+        //TODO how to navigate from page to another page using framework??
         public ResearchAndReviewsPage() : base(By.XPath(string.Format(LocatorConstants.PreciseTextLocator, PageName)), PageName)
         {
         }
@@ -28,16 +31,27 @@ namespace ExampleProject.mytask.Pages
             ILink link = ElementFactory.GetLink(SideBySide, "Side-By-Side Comparison");
             link.Click();
         }
-
-        //TODO add three fields from combobox and make them to build car
         public Car SelectCarInCombobox()
         {
-            return null;
+            string maker = SelectElementsFromDropDown(MakeField);
+            string model = SelectElementsFromDropDown(ModelField);
+            string year = SelectElementsFromDropDown(YearField);
+
+            return new Car(maker, model, year);
         }
 
         public void ClickResearchButton()
         {
             ResearchButton.Click();
+        }
+
+        private static string SelectElementsFromDropDown(By dropdown)
+        {        
+            IList<Element> list = ElementFactory.FindElements<Element>(dropdown);
+            Random random = new Random();
+            //starting from 2 because on 1st place is "All models" or smth like this
+            int randomInt = random.Next(2, list.Count() + 1);
+            return list[randomInt].GetElement().GetAttribute("value");
         }
     }
 }

@@ -4,18 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExampleProject.mytask
+namespace ExampleProject.mytask.Models
 {
     internal class Car
     {
-        private string Maker { get; set; }
-        private string Model { get; set; }
-        private int Year { get; set; }
-        private string DoorCount { get; set; }
-        private string Seats { get; set; }
-        private string Engine { get; set; }
+        //TODO on the site Engines are not the same on two different pages.
+        //There are no doors also
+        public string Maker { get; set; }
+        public string Model { get; set; }
+        public string Year { get; set; }
+        public string DoorCount { get; set; }
+        public string Seats { get; set; }
+        public string Engine { get; set; }
 
-        public Car(string maker, string model, int year)
+        public Car(string maker, string model, string year)
         {
             Maker = maker;
             Model = model;

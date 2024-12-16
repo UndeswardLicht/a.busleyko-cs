@@ -8,7 +8,7 @@ using AQB = Aquality.Selenium.Browsers;
 using AQBS = Aquality.Selenium.Browsers.AqualityServices;
 
 
-namespace ExampleProject.Selenium
+namespace ExampleProject.mytask.Tests
 {
     internal class BaseAqualityTest
 
@@ -17,7 +17,7 @@ namespace ExampleProject.Selenium
         protected static readonly string url = "http://www.cars.com";
 
         [SetUp]
-       public void Setup()
+        public void Setup()
         {
             browser.Maximize();
             browser.GoTo(url);
