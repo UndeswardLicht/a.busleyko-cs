@@ -35,13 +35,10 @@ namespace ExampleProject.mytask.Tests
             //3   Выполняем поиск по случайно выбранным характеристикам
             //    -> Значения успешно выбраны в combobox.После нажатия на кнопку Research
             //    открывается страница с описанием авто
-            Car carA = researchAndReviewsPage.SelectCarInCombobox();
-            researchAndReviewsPage.ClickResearchButton();
-            ClassicAssert.IsTrue(carDescriptionPage.State.IsDisplayed);
-
             //4   Переходим к разделу Trims и выбираем базовый(первый) трим
             //    ->Открылась страница с характеристиками выбранной модификации
-            carDescriptionPage.SelectFirstTrim();
+
+            Car carA = SelectCarWithExistingTrim();
             ClassicAssert.IsTrue(modelDescriptionPage.State.IsDisplayed);
 
             //5   Запоминаем характеристики авто для последующего сравнения(характеристики: Engine, Seats и Door Count)
@@ -54,9 +51,10 @@ namespace ExampleProject.mytask.Tests
 
             //7   Выполняем шаги 2 - 5 для еще одного набора данных для поиска
             //    ->Поиск и отображение информации об авто успешно производится; характеристики сохранены
+            carsMainPage.GoToReviews();
+            Car carB = SelectCarWithExistingTrim();
 
-            // ???
-            Car carB;
+            carDescriptionPage.GoToMain();
 
             //8   Возвращаемся на страницу "Research & reviews"
             //    ->Открылась страница "Research & reviews"

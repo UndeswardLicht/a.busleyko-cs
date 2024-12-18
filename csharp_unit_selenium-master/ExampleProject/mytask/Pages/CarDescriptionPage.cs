@@ -12,8 +12,8 @@ namespace ExampleProject.mytask.Pages
     {
         private const string PageName = "Selected car page";
         private const string UniqeElement = "Change year or car";
-    //    private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
-    //"//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
+        private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
+    "//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
         private IButton ReviewsButton = ElementFactory.GetButton(By.XPath(
     "//header//*[@data-linkname='header-research']"), "Go to Research & Reviews button");
         private readonly ILink FirstTrimLink = ElementFactory.GetLink(
@@ -31,10 +31,10 @@ namespace ExampleProject.mytask.Pages
             //TODO how to handle situation if cannot find trim? - simply go to main page and find once again
             FirstTrimLink.Click();
         }
-        //public void GoToMain()
-        //{
-        //    HeaderLogoButton.Click();
-        //}
+        public void GoToMain()
+        {
+            HeaderLogoButton.Click();
+        }
         public void GoToReviews()
         {
             ReviewsButton.Click();
