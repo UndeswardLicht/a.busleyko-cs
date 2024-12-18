@@ -14,14 +14,14 @@ namespace ExampleProject.mytask.Pages
     {
         private const string PageName = "Research & Reviews";
         private By SideBySide = By.XPath("//*[@data-linkname='research-compare']");
-        private By Combobox = By.XPath(string.Format(LocatorConstants.PreciseClassLocator, "sds-field-group field-group-melded"));
         private IButton ResearchButton = ElementFactory.GetButton(By.XPath(string.Format(
             LocatorConstants.PreciseClassLocator, "sds-field-group field-group-melded")), "Research button");
         private By MakeField = By.XPath(string.Format(LocatorConstants.PreciseIdLocator, "make-select"));
         private By ModelField = By.XPath(string.Format(LocatorConstants.PreciseIdLocator, "model-select"));
         private By YearField = By.XPath(string.Format(LocatorConstants.PreciseIdLocator, "year-select"));
+        private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
+            "//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
 
-        //TODO how to navigate from page to another page using framework??
         public ResearchAndReviewsPage() : base(By.XPath(string.Format(LocatorConstants.PreciseTextLocator, PageName)), PageName)
         {
         }
@@ -52,6 +52,11 @@ namespace ExampleProject.mytask.Pages
             //starting from 2 because on 1st place is "All models" or smth like this
             int randomInt = random.Next(2, list.Count() + 1);
             return list[randomInt].GetElement().GetAttribute("value");
+        }
+
+        private void GoToMain()
+        {
+            HeaderLogoButton.Click();
         }
     }
 }

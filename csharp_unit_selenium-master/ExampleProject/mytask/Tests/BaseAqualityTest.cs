@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using NUnit.Framework;
-using AQ = Aquality.Selenium;
+﻿using NUnit.Framework;
 using AQB = Aquality.Selenium.Browsers;
 using AQBS = Aquality.Selenium.Browsers.AqualityServices;
 
@@ -14,7 +9,7 @@ namespace ExampleProject.mytask.Tests
 
     {
         protected AQB.Browser browser = AQBS.Browser;
-        protected static readonly string url = "http://www.cars.com";
+        protected static readonly string url = "http://www.cars.com/";
 
         [SetUp]
         public void Setup()

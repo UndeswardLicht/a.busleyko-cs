@@ -26,11 +26,11 @@ namespace ExampleProject.mytask
         //https://ru.wikipedia.org/
         private static readonly By headerWiki = By.XPath("//*[@class='main-top-header']");
         private static readonly By downloadAsPdfLink = By.XPath("//*[@id='coll-download-as-rl']");
-        private static readonly By pictureFromSelectedArticle = By.XPath("(//*[@class='main-box-content'])[1]//figure");
+        private static readonly By pictureFromSelectedArticle = By.XPath("//*[@id='main-tfa']//figure");
 
         //https://ru.wikipedia.org/wiki/Шпаргалка
         private static readonly By exampleFromColumn = By.XPath("//*[@id='Обычный_текст']/ancestor::td//following-sibling::td");
-        private static readonly By languageSettingsButton = By.XPath("//button[@class='uls-settings-trigger']");
+        private static readonly By languageSettingsButton = By.XPath("//*[@id='p-lang']/button[@class='uls-settings-trigger']");
 
         //https://ru.wikipedia.org/login
         private static readonly By loginField = By.XPath("//input[@id='wpName1']");

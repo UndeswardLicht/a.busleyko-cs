@@ -11,18 +11,25 @@ namespace ExampleProject.mytask.Pages
     {
         private const string PageName = "Cars - Main Page";
         private const string uniqueElement = "Popular categories";
-        private ILink navigationLink(string navigation) => ElementFactory.GetLink(
-            By.XPath(string.Format(LocatorConstants.PreciseTextLocator, navigation)), "Navigation link");
+        private ILink reviewsPageLink = ElementFactory.GetLink(By.XPath(
+            "//header//*[@data-linkname = 'header-research']"), "Link to go to Research & Reviews page"); 
+
+        //private ILink navigationLink(string navigation) => ElementFactory.GetLink(
+        //    By.XPath(string.Format(LocatorConstants.PreciseTextLocator, navigation)), "Navigation link");
 
         public CarsMainPage() : base(By.XPath(string.Format(LocatorConstants.PartialTextLocator, uniqueElement)), PageName)
         {
         }
 
-        public void ClickNavigationLink(string navigationName)
-        {
-            navigationLink(navigationName).Click();
-        }
+        //public void ClickNavigationLink(string navigationName)
+        //{
+        //    navigationLink(navigationName).Click();
+        //}
 
+        public void GoToReviews()
+        {
+            reviewsPageLink.Click();
+        }
 
 
     }
