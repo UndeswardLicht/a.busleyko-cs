@@ -1,6 +1,4 @@
-﻿using AngleSharp.Dom;
-using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using NUnit.Framework;
 using AQB = Aquality.Selenium.Browsers;
 using AQBS = Aquality.Selenium.Browsers.AqualityServices;
 

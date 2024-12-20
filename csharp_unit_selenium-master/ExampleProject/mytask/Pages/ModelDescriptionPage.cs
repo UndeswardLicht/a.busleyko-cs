@@ -1,13 +1,10 @@
-﻿using System;
-using AQF = Aquality.Selenium.Forms;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
-using ExampleProject.mytask.Constants;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class ModelDescriptionPage : AQF.Form
+    internal class ModelDescriptionPage : Aquality.Selenium.Forms.Form
     {
         private const string PageName = "Specific car model page";
         private static By UniqeElement = By.XPath("//*[@id='change-trim-popover']");

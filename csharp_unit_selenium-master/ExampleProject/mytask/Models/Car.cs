@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ExampleProject.mytask.Models
 {
@@ -20,7 +16,6 @@ namespace ExampleProject.mytask.Models
             Year = year;
         }
 
-        //todo delete the equals as it works fine from the box
         public override bool Equals(object? obj)
         {
             return obj is Car car &&

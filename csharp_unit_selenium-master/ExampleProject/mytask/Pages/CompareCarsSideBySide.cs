@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using Aquality.Selenium.Elements;
-using Aquality.Selenium.Elements.Interfaces;
-using ExampleProject.mytask.Constants;
+﻿using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
 using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools.V129.Overlay;
-using OpenQA.Selenium.Support.UI;
-using AQF = Aquality.Selenium.Forms;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class CompareCarsSideBySide : AQF.Form
+    internal class CompareCarsSideBySide : Aquality.Selenium.Forms.Form
     {
         private const string PageName = "Compare cars side by side";
         private static By UniqeElement = By.XPath("//h1[contains(text(), 'Compare cars')]");

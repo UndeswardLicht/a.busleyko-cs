@@ -1,9 +1,7 @@
-﻿using Aquality.Selenium.Elements.Interfaces;
-using ExampleProject.mytask.Models;
+﻿using ExampleProject.mytask.Models;
 using ExampleProject.mytask.Pages;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
-using OpenQA.Selenium;
 
 namespace ExampleProject.mytask.Tests
 {

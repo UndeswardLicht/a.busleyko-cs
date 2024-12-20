@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Linq;
-using AQF = Aquality.Selenium.Forms;
 using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
-using ExampleProject.mytask.Constants;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class ResearchAndReviewsPage : AQF.Form
+    internal class ResearchAndReviewsPage : Aquality.Selenium.Forms.Form
     {
         private const string PageName = "Research & Reviews";
-        private By SideBySide = By.XPath("//*[@data-linkname='research-compare']");
+        private static By uniqueElement = By.XPath("//*[text()='Research & Reviews']");
+        private By SideBySideComparison = By.XPath("//*[@data-linkname='research-compare']");
         private IButton ResearchButton = ElementFactory.GetButton(
             By.XPath("//*[@id='panel-2']//spark-button"), "Research button");
         private By MakeField = By.XPath("//*[@id='make-select']");
         private By ModelField = By.XPath("//*[@id='model-select']");
         private By YearField = By.XPath("//*[@id='year-select']");
-        public ResearchAndReviewsPage() : base(By.XPath(string.Format(LocatorConstants.PreciseTextLocator, PageName)), PageName)
+        public ResearchAndReviewsPage() : base(uniqueElement, PageName)
         {
         }
 
         public void ClickForComparison()
         {
-            ILink link = ElementFactory.GetLink(SideBySide, "Side-By-Side Comparison");
+            ILink link = ElementFactory.GetLink(SideBySideComparison, "Side-By-Side Comparison");
             link.Click();
         }
         public Car SelectCarInCombobox()
