@@ -10,18 +10,18 @@ namespace ExampleProject.mytask.Pages
     internal class ModelDescriptionPage : AQF.Form
     {
         private const string PageName = "Specific car model page";
-        private const string UniqeElement = "Change trim";
-        private static By ThisTrimEngine = By.XPath("//*[@id='research-trim-specs']//*[contains(text(), 'Engine Type')]/preceding-sibling::*");
+        private static By UniqeElement = By.XPath("//*[@id='change-trim-popover']");
+        private static By ThisTrimPrice = By.XPath("//*[@class='price-amount']");
         private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
     "//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
 
-        public ModelDescriptionPage() : base(By.XPath(string.Format(LocatorConstants.PartialTextLocator, UniqeElement)), PageName)
+        public ModelDescriptionPage() : base(UniqeElement, PageName)
         {
         }
 
         public Car AddCarDetails(Car someCar)
         {
-            someCar.Engine = ElementFactory.GetLabel(ThisTrimEngine, "type of engine").Text;
+            someCar.Price= ElementFactory.GetLabel(ThisTrimPrice, "price for it").Text;
             return someCar;
         }
 

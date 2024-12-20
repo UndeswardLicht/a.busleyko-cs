@@ -11,10 +11,8 @@ namespace ExampleProject.mytask.Models
         public string Maker { get; set; }
         public string Model { get; set; }
         public string Year { get; set; }
-        public string Engine { get; set; } = string.Empty;
+        public string Price { get; set; } = string.Empty;
 
-
-        //todo change add необязательные поля
         public Car(string maker, string model, string year)
         {
             Maker = maker;
@@ -29,12 +27,12 @@ namespace ExampleProject.mytask.Models
                    Maker == car.Maker &&
                    Model == car.Model &&
                    Year == car.Year &&
-                   Engine == car.Engine;
+                   Price == car.Price;
         }
 
         public override int GetHashCode()
         {
-            return HashCode.Combine(Maker, Model, Year, Engine);
+            return HashCode.Combine(Maker, Model, Year, Price);
         }
     }
 }

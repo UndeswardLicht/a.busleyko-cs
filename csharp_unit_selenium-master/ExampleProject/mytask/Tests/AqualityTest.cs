@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aquality.Selenium.Elements;
+﻿using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
 using ExampleProject.mytask.Pages;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
+using OpenQA.Selenium;
 
 namespace ExampleProject.mytask.Tests
 {
@@ -20,12 +16,14 @@ namespace ExampleProject.mytask.Tests
         private YourCarComparisonPage yourCarComparisonPage = new();
         private CompareCarsSideBySide compareCarsSideBySide = new();
 
+
         [Test]
         public void carsTest()
         {
             //1   Переход на сайт http://www.cars.com
             //    -> Открывается главная страница сайта
             ClassicAssert.IsTrue(carsMainPage.State.IsDisplayed);
+            carsMainPage.ClickAcceptAllOnBanner();
 
             //2   Переходим на страницу "Research & reviews"
             //    ->Открывается страница "Research & reviews".
@@ -39,6 +37,8 @@ namespace ExampleProject.mytask.Tests
             //    ->Открылась страница с характеристиками выбранной модификации
 
             Car carA = SelectCarWithExistingTrim();
+
+            carDescriptionPage.SelectFirstTrim();
             ClassicAssert.IsTrue(modelDescriptionPage.State.IsDisplayed);
 
             //5   Запоминаем характеристики авто для последующего сравнения(характеристики: Engine, Seats и Door Count)
@@ -53,7 +53,7 @@ namespace ExampleProject.mytask.Tests
             //    ->Поиск и отображение информации об авто успешно производится; характеристики сохранены
             carsMainPage.GoToReviews();
             Car carB = SelectCarWithExistingTrim();
-
+            carDescriptionPage.SelectFirstTrim();
             carDescriptionPage.GoToMain();
 
             //8   Возвращаемся на страницу "Research & reviews"
@@ -73,27 +73,28 @@ namespace ExampleProject.mytask.Tests
 
             compareCarsSideBySide.SelectFirstCar(carA);
             compareCarsSideBySide.SelectSecondCar(carB);
+
             compareCarsSideBySide.ClickSearchButton();
             ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed);
 
 
             //12  Кликаем по кнопке See the comparison и проверяем страницу сравнения 2 - ух моделей
             //    ->Характеристики авто на странице соответствуют тем, что получены на шагах 2 - 7
-            ClassicAssert.IsTrue(yourCarComparisonPage.retrieveEngineFirstCar().Equals(carA.Engine));
-            ClassicAssert.IsTrue(yourCarComparisonPage.retrieveEngineSecondCar().Equals(carB.Engine));
-            
-        }
-        public Car SelectCarWithExistingTrim()
-        {
-            Car car = researchAndReviewsPage.SelectCarInCombobox();
-            researchAndReviewsPage.ClickResearchButton();
-            if (carDescriptionPage.CheckTrims())
-            {
-                return car;
-            };
-            carDescriptionPage.GoToReviews();
-            return SelectCarWithExistingTrim();
+            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceFirstCar().Equals(carA.Price));
+            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceSecondCar().Equals(carB.Price));
 
         }
+        public Car SelectCarWithExistingTrim()
+                {
+                    Car car = researchAndReviewsPage.SelectCarInCombobox();
+                    researchAndReviewsPage.ClickResearchButton();
+                    if (carDescriptionPage.CheckTrims())
+                    {
+                        return car;
+                    };
+                    carDescriptionPage.GoToReviews();
+                    return SelectCarWithExistingTrim();
+
+                }
     }
 }

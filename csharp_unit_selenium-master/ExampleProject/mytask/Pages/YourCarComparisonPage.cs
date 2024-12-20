@@ -12,26 +12,22 @@ namespace ExampleProject.mytask.Pages
     {
         private const string PageName = "Your car comparison";
         private static By UniqeElement = By.XPath(string.Format(LocatorConstants.PreciseClassLocator, "compare-add-button-container"));
-        //private By engineFirstCar = By.XPath("(//*[@data-qa ='engine_type_data'])[1]/*[@class='data-point']");
-        //private By engineSecondCar = By.XPath("(//*[@data-qa ='engine_type_data'])[2]/*[@class='data-point']");
-
-        private ILabel engineFirstCar = ElementFactory.GetLabel(By.XPath("(//*[@data-qa ='engine_type_data'])[1]/*[@class='data-point']"), "engine");
-        private ILabel engineSecondCar = ElementFactory.GetLabel(By.XPath("(//*[@data-qa ='engine_type_data'])[2]/*[@class='data-point']"), "engine");
+        private ILabel priceFirstCar = ElementFactory.GetLabel(By.XPath("(//*[@class='price-amount'])[1]"), "price of first car");
+        private ILabel priceSecondCar = ElementFactory.GetLabel(By.XPath("(//*[@class='price-amount'])[2]"), "price of second car");
 
         public YourCarComparisonPage() : base(UniqeElement, PageName)
         {
         }
 
-        public string retrieveEngineFirstCar()
+        public string retrievePriceFirstCar()
         {
-            return engineFirstCar.GetText();
+            return priceFirstCar.GetText();
         }
-        public string retrieveEngineSecondCar()
+        public string retrievePriceSecondCar()
         {
-            return engineSecondCar.GetText();
+            return priceSecondCar.GetText();
         }
 
-        
 
     }
 }

@@ -1,10 +1,7 @@
-﻿using System;
-using AQF = Aquality.Selenium.Forms;
+﻿using AQF = Aquality.Selenium.Forms;
 using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
-using System.Reflection.Metadata;
 using ExampleProject.mytask.Constants;
-using Aquality.Selenium.Elements;
 
 namespace ExampleProject.mytask.Pages
 {
@@ -28,7 +25,6 @@ namespace ExampleProject.mytask.Pages
         }
         public void SelectFirstTrim()
         {
-            //TODO how to handle situation if cannot find trim? - simply go to main page and find once again
             FirstTrimLink.Click();
         }
         public void GoToMain()
