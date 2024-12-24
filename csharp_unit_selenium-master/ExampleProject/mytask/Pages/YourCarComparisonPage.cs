@@ -5,24 +5,17 @@ namespace ExampleProject.mytask.Pages
 {
     internal class YourCarComparisonPage : Aquality.Selenium.Forms.Form
     {
-        private const string PageName = "Your car comparison";
-        private static By uniqeElement = By.XPath("//*[@class='compare-add-button-container']");
-        private ILabel priceFirstCar = ElementFactory.GetLabel(By.XPath("(//*[@class='price-amount'])[1]"), "price of first car");
-        private ILabel priceSecondCar = ElementFactory.GetLabel(By.XPath("(//*[@class='price-amount'])[2]"), "price of second car");
-
-        public YourCarComparisonPage() : base(uniqeElement, PageName)
+        private string priceCar = "(//*[@class='price-amount'])";
+        public YourCarComparisonPage() : base(By.XPath("//*[@class='compare-add-button-container']"), "Your car comparison")
         {
         }
 
-        public string retrievePriceFirstCar()
+        public string retrievePriceCar(string whichCar)
         {
-            return priceFirstCar.GetText();
+            ILabel price = ElementFactory.GetLabel(
+                By.XPath(priceCar + $"[{whichCar}]"), $"price of the {whichCar} car");
+            return "";
         }
-        public string retrievePriceSecondCar()
-        {
-            return priceSecondCar.GetText();
-        }
-
 
     }
 }

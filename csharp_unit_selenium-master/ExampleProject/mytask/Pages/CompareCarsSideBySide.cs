@@ -1,4 +1,5 @@
-﻿using Aquality.Selenium.Elements.Interfaces;
+﻿using Aquality.Selenium.Elements;
+using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
 using OpenQA.Selenium;
 
@@ -6,38 +7,32 @@ namespace ExampleProject.mytask.Pages
 {
     internal class CompareCarsSideBySide : Aquality.Selenium.Forms.Form
     {
-        private const string PageName = "Compare cars side by side";
-        private static By UniqeElement = By.XPath("//h1[contains(text(), 'Compare cars')]");
-        private IComboBox MakeFieldFirstCar = ElementFactory.GetComboBox(By.XPath("//*[@data-qa='make-selector-vehicle_1']"), "first car maker dropdown");
-        private IComboBox ModelFieldFirstCar = ElementFactory.GetComboBox(By.XPath("//*[@data-qa='model-selector-vehicle_1']"), "first car model dropdown");
-        private IComboBox YearFieldFirstCar = ElementFactory.GetComboBox(By.XPath("//*[@data-qa='year-selector-vehicle_1']"), "first car year dropdown");
-        private IComboBox MakeFieldSecondCar = ElementFactory.GetComboBox(By.XPath("//*[@data-qa='make-selector-vehicle_2']"), "second car maker dropdown");
-        private IComboBox ModelFieldSecondCar = ElementFactory.GetComboBox(By.XPath("//*[@data-qa='model-selector-vehicle_2']"), "second car model dropdown");
-        private IComboBox YearFieldSecondCar = ElementFactory.GetComboBox(By.XPath("//*[@data-qa='year-selector-vehicle_2']"), "second car year dropdown");
+        private string MakerPath = "//*[@data-qa='make-selector-vehicle_']";
+        private string ModelPath= "//*[@data-qa='model-selector-vehicle_']";
+        private string YearPath = "//*[@data-qa='year-selector-vehicle_']";
         private IButton SeeComparisonButton = ElementFactory.GetButton(By.XPath("//spark-button[contains(text(), 'See the comparison')]"), "See comparison button");
         private ILabel label(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "label");
-        public CompareCarsSideBySide() : base(UniqeElement, PageName)
+        public CompareCarsSideBySide() : base(By.XPath("//h1[contains(text(), 'Compare cars')]"), "Compare cars side by side")
         {   
         }
-        public void SelectFirstCar(Car car)
-        {
-            MakeFieldFirstCar.ClickAndWait();
-            label(car.Maker).ClickAndWait();
-            ModelFieldFirstCar.ClickAndWait();
-            label(car.Model).ClickAndWait();
-            YearFieldFirstCar.ClickAndWait();
-            label(car.Year).ClickAndWait();
-        }
-        public void SelectSecondCar(Car car)
-        {
-            MakeFieldSecondCar.ClickAndWait();
-            label(car.Maker).ClickAndWait();
-            ModelFieldSecondCar.ClickAndWait();
-            label(car.Model).ClickAndWait();
-            YearFieldSecondCar.ClickAndWait();
-            label(car.Year).ClickAndWait();
-        }
 
+        public void SelectCar(Car car, string whichCar)
+        {
+            ILabel makeCar = ElementFactory.GetLabel(
+                By.XPath(MakerPath.Insert(MakerPath.Length - 2, whichCar)), $"maker dropdown of the {whichCar} car");
+            ILabel modelCar = ElementFactory.GetLabel(
+                By.XPath(ModelPath.Insert(ModelPath.Length - 2, whichCar)), $"model dropdown of the {whichCar} car");
+            ILabel yearCar = ElementFactory.GetLabel(
+                By.XPath(YearPath.Insert(YearPath.Length - 2, whichCar)), $"year dropdown of the {whichCar} car");
+            
+            makeCar.ClickAndWait();
+            label(car.Maker).ClickAndWait();
+            modelCar.ClickAndWait();
+            label(car.Model).ClickAndWait();
+            yearCar.ClickAndWait();
+            label(car.Year).ClickAndWait();
+
+        }
         public void ClickSearchButton()
         {
             SeeComparisonButton.Click();

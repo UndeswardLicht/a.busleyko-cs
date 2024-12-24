@@ -1,5 +1,6 @@
 ﻿using ExampleProject.mytask.Models;
 using ExampleProject.mytask.Pages;
+using ExampleProject.mytask.Tests.Utils;
 using NUnit.Framework;
 using NUnit.Framework.Legacy;
 
@@ -34,8 +35,7 @@ namespace ExampleProject.mytask.Tests
             //4   Переходим к разделу Trims и выбираем базовый(первый) трим
             //    ->Открылась страница с характеристиками выбранной модификации
 
-            Car carA = SelectCarWithExistingTrim();
-
+            Car carA = TestUtils.SelectCarWithExistingTrim(researchAndReviewsPage, carDescriptionPage);
             carDescriptionPage.SelectFirstTrim();
             ClassicAssert.IsTrue(modelDescriptionPage.State.IsDisplayed);
 
@@ -50,7 +50,7 @@ namespace ExampleProject.mytask.Tests
             //7   Выполняем шаги 2 - 5 для еще одного набора данных для поиска
             //    ->Поиск и отображение информации об авто успешно производится; характеристики сохранены
             carsMainPage.GoToReviews();
-            Car carB = SelectCarWithExistingTrim();
+            Car carB = TestUtils.SelectCarWithExistingTrim(researchAndReviewsPage, carDescriptionPage);
             carDescriptionPage.SelectFirstTrim();
             carDescriptionPage.GoToMain();
 
@@ -69,30 +69,18 @@ namespace ExampleProject.mytask.Tests
             //11  Используя Add car, добавляем к сравнению модель, полученную на шаге 7
             //    ->Модели успешно выбраны для сравнения
 
-            compareCarsSideBySide.SelectFirstCar(carA);
-            compareCarsSideBySide.SelectSecondCar(carB);
+            compareCarsSideBySide.SelectCar(carA, "1");
+            compareCarsSideBySide.SelectCar(carB, "2");
 
             compareCarsSideBySide.ClickSearchButton();
             ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed);
 
-
             //12  Кликаем по кнопке See the comparison и проверяем страницу сравнения 2 - ух моделей
             //    ->Характеристики авто на странице соответствуют тем, что получены на шагах 2 - 7
-            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceFirstCar().Equals(carA.Price));
-            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceSecondCar().Equals(carB.Price));
+            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceCar("1").Equals(carA.Price));
+            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceCar("2").Equals(carB.Price));
+
 
         }
-        public Car SelectCarWithExistingTrim()
-                {
-                    Car car = researchAndReviewsPage.SelectCarInCombobox();
-                    researchAndReviewsPage.ClickResearchButton();
-                    if (carDescriptionPage.CheckTrims())
-                    {
-                        return car;
-                    };
-                    carDescriptionPage.GoToReviews();
-                    return SelectCarWithExistingTrim();
-
-                }
     }
 }

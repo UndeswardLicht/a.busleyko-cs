@@ -6,19 +6,17 @@ namespace ExampleProject.mytask.Pages
 {
     internal class ModelDescriptionPage : Aquality.Selenium.Forms.Form
     {
-        private const string PageName = "Specific car model page";
-        private static By UniqeElement = By.XPath("//*[@id='change-trim-popover']");
-        private static By ThisTrimPrice = By.XPath("//*[@class='price-amount']");
+        private ILabel ThisTrimPrice = ElementFactory.GetLabel(By.XPath("//*[@class='price-amount']"), "price for it");
         private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
     "//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
 
-        public ModelDescriptionPage() : base(UniqeElement, PageName)
+        public ModelDescriptionPage() : base(By.XPath("//*[@id='change-trim-popover']"), "Specific car model page")
         {
         }
 
         public Car AddCarDetails(Car someCar)
         {
-            someCar.Price= ElementFactory.GetLabel(ThisTrimPrice, "price for it").Text;
+            someCar.Price= ThisTrimPrice.Text;
             return someCar;
         }
 

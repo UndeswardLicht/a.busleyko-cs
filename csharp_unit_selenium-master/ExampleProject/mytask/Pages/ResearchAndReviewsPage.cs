@@ -8,22 +8,20 @@ namespace ExampleProject.mytask.Pages
 {
     internal class ResearchAndReviewsPage : Aquality.Selenium.Forms.Form
     {
-        private const string PageName = "Research & Reviews";
-        private static By uniqueElement = By.XPath("//*[text()='Research & Reviews']");
-        private By SideBySideComparison = By.XPath("//*[@data-linkname='research-compare']");
         private IButton ResearchButton = ElementFactory.GetButton(
             By.XPath("//*[@id='panel-2']//spark-button"), "Research button");
+        private ILink SideBySideComparisonLink = ElementFactory.GetLink(
+            By.XPath("//*[@data-linkname='research-compare']"), "Side-By-Side Comparison");
         private By MakeField = By.XPath("//*[@id='make-select']");
         private By ModelField = By.XPath("//*[@id='model-select']");
         private By YearField = By.XPath("//*[@id='year-select']");
-        public ResearchAndReviewsPage() : base(uniqueElement, PageName)
+        public ResearchAndReviewsPage() : base(By.XPath("//*[text()='Research & Reviews']"), "Research & Reviews")
         {
         }
 
         public void ClickForComparison()
         {
-            ILink link = ElementFactory.GetLink(SideBySideComparison, "Side-By-Side Comparison");
-            link.Click();
+            SideBySideComparisonLink.Click();
         }
         public Car SelectCarInCombobox()
         {
