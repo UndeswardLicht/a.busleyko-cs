@@ -20,6 +20,11 @@ namespace ExampleProject.mytask.Pages
             return someCar;
         }
 
+        public string GetPriceOfThisCar()
+        {
+            return ThisTrimPrice.Text;
+        }
+
         public void GoToMain()
         {
             HeaderLogoButton.Click();

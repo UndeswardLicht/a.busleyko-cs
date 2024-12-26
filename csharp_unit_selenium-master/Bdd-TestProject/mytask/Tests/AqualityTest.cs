@@ -77,8 +77,8 @@ namespace ExampleProject.mytask.Tests
 
             //12  Кликаем по кнопке See the comparison и проверяем страницу сравнения 2 - ух моделей
             //    ->Характеристики авто на странице соответствуют тем, что получены на шагах 2 - 7
-            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceCar("1").Equals(carA.Price));
-            ClassicAssert.IsTrue(yourCarComparisonPage.retrievePriceCar("2").Equals(carB.Price));
+            ClassicAssert.IsTrue(yourCarComparisonPage.retrieveCarPrice("1").Equals(carA.Price));
+            ClassicAssert.IsTrue(yourCarComparisonPage.retrieveCarPrice("2").Equals(carB.Price));
 
 
         }

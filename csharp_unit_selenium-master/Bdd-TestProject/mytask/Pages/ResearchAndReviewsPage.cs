@@ -15,6 +15,8 @@ namespace ExampleProject.mytask.Pages
         private By MakeField = By.XPath("//*[@id='make-select']");
         private By ModelField = By.XPath("//*[@id='model-select']");
         private By YearField = By.XPath("//*[@id='year-select']");
+        private ILabel label(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "label");
+
         public ResearchAndReviewsPage() : base(By.XPath("//*[text()='Research & Reviews']"), "Research & Reviews")
         {
         }
@@ -23,21 +25,33 @@ namespace ExampleProject.mytask.Pages
         {
             SideBySideComparisonLink.Click();
         }
-        public Car SelectCarInCombobox()
-        {
-            string maker = SelectElementsFromDropDown(MakeField);
-            string model = SelectElementsFromDropDown(ModelField);
-            string year = SelectElementsFromDropDown(YearField);
 
+        //Next method selects from dropdown a specific car 
+        //provided as an argument and returns nothing
+        public void SelectSpecificCarInCombobox(Car car)
+        {
+            ILabel makeCar = ElementFactory.GetLabel(MakeField, "maker dropdown of the car");
+            ILabel modelCar = ElementFactory.GetLabel(ModelField, "model dropdown of the car");
+            ILabel yearCar = ElementFactory.GetLabel(YearField, "year dropdown of the car");
+
+            makeCar.ClickAndWait();
+            label(car.Maker).ClickAndWait();
+            modelCar.ClickAndWait();
+            label(car.Model).ClickAndWait();
+            yearCar.ClickAndWait();
+            label(car.Year).ClickAndWait();
+        }
+
+        //Next two methods select a random car from dropdown and return a Car object
+        public Car SelectRandomCarInCombobox()
+        {
+            string maker = SelectRandomElementsFromDropDown(MakeField);
+            string model = SelectRandomElementsFromDropDown(ModelField);
+            string year = SelectRandomElementsFromDropDown(YearField);
             return new Car(maker, model, year);
         }
 
-        public void ClickResearchButton()
-        {
-            ResearchButton.Click();
-        }
-
-        private static string SelectElementsFromDropDown(By dropdown)
+        private static string SelectRandomElementsFromDropDown(By dropdown)
         {
             Random random = new Random();
             IComboBox drp = ElementFactory.GetComboBox(dropdown, "dropdown");
@@ -46,6 +60,11 @@ namespace ExampleProject.mytask.Pages
             drp.SelectByIndex(randomInt);
             return drp.SelectedText;
         }
+        public void ClickResearchButton()
+        {
+            ResearchButton.Click();
+        }
+
 
     }
 }

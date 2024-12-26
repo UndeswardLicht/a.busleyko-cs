@@ -12,7 +12,7 @@ namespace ExampleProject.mytask.Tests.Utils
     {
         public static Car SelectCarWithExistingTrim(ResearchAndReviewsPage rrp, CarDescriptionPage cdp)
         {
-            Car car = rrp.SelectCarInCombobox();
+            Car car = rrp.SelectRandomCarInCombobox();
             rrp.ClickResearchButton();
             if (cdp.CheckTrims())
             {

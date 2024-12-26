@@ -10,7 +10,7 @@ namespace ExampleProject.mytask.Pages
         {
         }
 
-        public string retrievePriceCar(string whichCar)
+        public string retrieveCarPrice(string whichCar)
         {
             ILabel price = ElementFactory.GetLabel(
                 By.XPath(priceCar + $"[{whichCar}]"), $"price of the {whichCar} car");
