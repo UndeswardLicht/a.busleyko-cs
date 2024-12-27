@@ -1,40 +1,74 @@
 ﻿Feature: TwoCarsSideBySideComparison
 
-Scenario: Two trims don't change their properties when compared side by side
-	Given an existing very first trim of car A is selected
-	And the price of the very first trim of car A is remembered 
-	And an existing very first trim of car B is selected
-	And the price of the very first trim of car B is remembered 
-	When I am on the the Main page and I go to the Research & Reviews page
+Background: 
+	Given Go to Main page
+
+Scenario: Two trims don't change their properties when compared side by 
+	When I go to Research & Reviews page
 	Then Research & Reviews page is displayed
-	When I go click 'Compare cars' in 'Side-by-Side Comparisons' section
-	Then the Side-By-Side Comparison page is displayed
-	When I select car A in the first box
-	And I select car B in the second box
-	And I click 'Compare cars' button
-	Then Your Car comparison page is displayed
-	And Price of car A is the same as remembered
-	And Price of car B is the same as remembered
+	When I select "FIAT" in Make dropdown
+	And I select "500" in Model dropdown
+	And I select "2012" in Year dropdown
+	And Click Research button
+	Then Car description page is displayed
+	When I select the very first trim of the car
+	Then Model description page is displayed
+	And I remember the price for that model
 
-@correct
+	When I go back to Main page
+	And I go to Research & Reviews page
+	Then Research & Reviews page is displayed
+	When I select "BMW" in Make dropdown
+	And I select "128" in Model dropdown
+	And I select "2013" in Year dropdown
+	And Click Research button
+	Then Car description page is displayed
+	When I select the very first trim of the car
+	Then Model description page is displayed
+	And I remember the price for that model
+
+	When I go to Research & Reviews page
+	And I click Compare Cars Side-By-Side link
+	Then Compare Cars Side By Side page is displayed
+	When I select "FIAT" in Make dropdown in "1"st box
+	And I select "500" in Model dropdown in "1"st box
+	And I select "2012" in Year dropdown in "1"st box
+	And I select "BMW" in Make dropdown in "2"d box
+	And I select "128" in Model dropdown in "2"d box
+	And I select "2013" in Year dropdown in "2"d box
+	And I click See the comparison button
+	Then Your cars comparison page is displayed
+	And The price for the carA is the same as it was remembered
+	And The price for the carB is the same as it was remembered
+
+
 Scenario: Used car is cheaper than a brand new one of the same trim
-	Given An existing very first trim of car A is selected and remembered 
-	And I am on the the Main Page 
-	When I go to Cars for Sale page
-	Then Cars for Sale page is displayed
-	When I fill in the fields in the box by the "expected values"
-	Then A car is found
-	When I add Trim and Year of the car A to the searchbox
-	Then A car is found
-	When I compare the price of the found car with the price of the car A
-	Then The found car is cheaper than the car A
+	When I go to Research & Reviews page
+	Then Research & Reviews page is displayed
+	When I select "FIAT" in Make dropdown
+	And I select "500" in Model dropdown
+	And I select "2012" in Year dropdown
+	And Click Research button
+	Then Car description page is displayed
+	When I remember the very first trim of the car
+	And I select the very first trim of the car
+	Then Model description page is displayed
+	And I remember the price for that model
 
-@UI
-@fail
-Scenario: (Neg??) Used car is found
-	Given An existing very first trim of car A is selected and remembered 
-	And I am on the the Main Page 
 	When I go to Cars for Sale page
 	Then Cars for Sale page is displayed
-	When I fill in the fields in the box by the "expected values"
-	Then A car is found
+	When I select "Used" in Stock Type dropdown on Cars for Sale page
+	And I select "FIAT" in Make dropdown on Cars for Sale page
+	And I select "500" in Model dropdown on Cars for Sale page
+	And I select "No max price" in Price dropdown on Cars for Sale page
+	And I select "20 miles" in Radius dropdown on Cars for Sale page
+	And I enter "10001" in ZIP field on Cars for Sale page
+	And I click Search button
+	Then Cars for Sale results page is displayed
+	And At least one car is found
+	When I check the checkbox with the remembered trim in the filters on the left 
+	And I select "2012" in Min year dropdown on in the filters on the left 
+	And I select "2012" in Max year dropdown on in the filters on the left 
+	Then At least one car is found
+	When I compare the price of the found car with the price of remembered car
+	Then The price of the found used car is lower than the price of the remembered car

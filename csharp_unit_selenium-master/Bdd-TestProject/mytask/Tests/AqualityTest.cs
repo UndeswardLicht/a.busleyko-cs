@@ -1,4 +1,4 @@
-﻿using ExampleProject.mytask.Models;
+﻿/*using ExampleProject.mytask.Models;
 using ExampleProject.mytask.Pages;
 using ExampleProject.mytask.Tests.Utils;
 using NUnit.Framework;
@@ -84,3 +84,4 @@ namespace ExampleProject.mytask.Tests
         }
     }
 }
+*/

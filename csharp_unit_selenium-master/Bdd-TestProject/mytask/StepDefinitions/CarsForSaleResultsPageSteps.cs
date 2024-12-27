@@ -5,8 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Bdd_TestProject.mytask.StepDefinitions
-{ 
-    internal class UsedCarsTestSteps
+{
+    internal class CarsForSaleResultsPageSteps
     {
     }
 }

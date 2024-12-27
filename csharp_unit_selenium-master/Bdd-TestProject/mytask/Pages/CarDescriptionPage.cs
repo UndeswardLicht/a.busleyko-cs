@@ -1,10 +1,11 @@
 ﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
+using Bdd_TestProject.mytask.Pages;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class CarDescriptionPage : Aquality.Selenium.Forms.Form
+    internal class CarDescriptionPage : BaseForm
     {
         private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
     "//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
@@ -24,6 +25,9 @@ namespace ExampleProject.mytask.Pages
         {
             FirstTrimLink.Click();
         }
+
+
+
         public void GoToMain()
         {
             HeaderLogoButton.Click();

@@ -8,7 +8,7 @@ using TechTalk.SpecFlow;
 namespace Bdd_TestProject.mytask.StepDefinitions
 {
     [Binding]
-    //todo should test steps be separated into different files depending on the page?
+    //todo test steps to be separated into different files depending on page
     internal class TwoCarsComparisonTestSteps
     {
         private CarsMainPage carsMainPage = new();
@@ -42,8 +42,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
 
        
         //todo add specific cars as parameter
-        [Given(@"an existing very first trim of car A  is selected")]
-        [Given(@"an existing very first trim of car B is selected")]
+       
         public void SelectTheVeryFirstTrimOfCar(Car car)
         {
             carsMainPage.GoToReviews();
@@ -52,57 +51,47 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         }
 
         //todo modify those two or merge them two into one somehow 
-        [Given("the price of the very first trim of car A is remembered")]
         public void RememberThePriceOfTheTrimOfCarA()
         {
            priceOfCarA = modelDescriptionPage.GetPriceOfThisCar();
         }
 
-        [Given("the price of the very first trim of car B is remembered")]
         public void RememberThePriceOfTheTrimOfCarB()
         {
             priceOfCarB = modelDescriptionPage.GetPriceOfThisCar();
         }
 
-        [Given(@"I am on the the Main page and I go to the Research & Reviews page")]
         public void GoFromMainToReviewsPage()
         {
             carsMainPage.GoToReviews();
         }
 
-        [Then(@"Research & Reviews page is displayed")]
         public void ResearchPageIsDisplayed()
         {
             ClassicAssert.IsTrue(researchAndReviewsPage.State.IsDisplayed);
         }
 
-        [When(@"I go click 'Compare cars' in 'Side-by-Side Comparisons' section")]
         public void GoFromResearchToComparePage()
         {
             researchAndReviewsPage.ClickForComparison();
         }
 
-        [Then(@"the Side-By-Side Comparison page is displayed")]
         public void CompareSideBySideIsDisplayed()
         {
             ClassicAssert.IsTrue(compareCarsSideBySide.State.IsDisplayed);
         }
 
         //todo add specific cars as parameter
-        [When("I select car A in the first box")]
-        [When("I select car B in the second box")]
         public void SelectCarInSideBySideComparisonBox(Car car, string whichCar)
         {
             compareCarsSideBySide.SelectCar(car, whichCar);
         }
 
-        [When("I click 'Compare cars' button")]
         public void ClickCompareSideBySideButton()
         {
             compareCarsSideBySide.ClickSearchButton();
         }
 
-        [Then(@"Your Car comparison page is displayed")]
         public void CarComparisonPageIsDisplayed()
         {
             ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed);
@@ -110,8 +99,6 @@ namespace Bdd_TestProject.mytask.StepDefinitions
 
         //todo add specific cars as parameter
         //todo re-do as it's currently works with one pre-set variable - price of car A
-        [Then(@"Price of car A is the same as remembered")]
-        [Then(@"Price of car B is the same as remembered")]
         public void PriceOfCarIsTheSame(string whichCar)
         {
             ClassicAssert.IsTrue(yourCarComparisonPage.retrieveCarPrice(whichCar).Equals(priceOfCarA));

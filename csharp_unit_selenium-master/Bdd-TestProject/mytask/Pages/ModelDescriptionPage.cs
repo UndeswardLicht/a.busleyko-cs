@@ -1,10 +1,11 @@
 ﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
+using Bdd_TestProject.mytask.Pages;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class ModelDescriptionPage : Aquality.Selenium.Forms.Form
+    internal class ModelDescriptionPage : BaseForm
     {
         private ILabel ThisTrimPrice = ElementFactory.GetLabel(By.XPath("//*[@class='price-amount']"), "price for it");
         private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(

@@ -1,11 +1,12 @@
 ﻿using Aquality.Selenium.Elements;
 using Aquality.Selenium.Elements.Interfaces;
+using Bdd_TestProject.mytask.Pages;
 using ExampleProject.mytask.Models;
 using OpenQA.Selenium;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class CompareCarsSideBySide : Aquality.Selenium.Forms.Form
+    internal class CompareCarsSideBySide : BaseForm
     {
         private string MakerPath = "//*[@data-qa='make-selector-vehicle_']";
         private string ModelPath= "//*[@data-qa='model-selector-vehicle_']";

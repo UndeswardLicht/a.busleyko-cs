@@ -1,9 +1,10 @@
 ﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
+using Bdd_TestProject.mytask.Pages;
 
 namespace ExampleProject.mytask.Pages
 {
-    internal class CarsMainPage : Aquality.Selenium.Forms.Form
+    internal class CarsMainPage : BaseForm
     {
         private IButton acceptBannerButton = ElementFactory.GetButton(By.Id("onetrust-accept-btn-handler"), "Accept all on banner button");
         private ILink reviewsPageLink = ElementFactory.GetLink(By.XPath(

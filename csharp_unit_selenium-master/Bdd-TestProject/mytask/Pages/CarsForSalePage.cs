@@ -7,7 +7,7 @@ using OpenQA.Selenium;
 
 namespace Bdd_TestProject.mytask.Pages
 {
-    internal class CarsForSalePage : Aquality.Selenium.Forms.Form
+    internal class CarsForSalePage : BaseForm
     {
         private By StockType = By.XPath("//*[@id='make-model-search-stocktype']");
         private By Make = By.XPath("//*[@id='makes");
