@@ -26,15 +26,13 @@ namespace ExampleProject.mytask.Pages
             FirstTrimLink.Click();
         }
 
-
-
-        public void GoToMain()
-        {
-            HeaderLogoButton.Click();
-        }
-        public void GoToReviews()
-        {
-            ReviewsButton.Click();
-        }
+        //public void GoToMain()
+        //{
+        //    HeaderLogoButton.Click();
+        //}
+        //public void GoToReviews()
+        //{
+        //    ReviewsButton.Click();
+        //}
     }
 }

@@ -26,9 +26,9 @@ namespace ExampleProject.mytask.Pages
             return ThisTrimPrice.Text;
         }
 
-        public void GoToMain()
-        {
-            HeaderLogoButton.Click();
-        }
+        //public void GoToMain()
+        //{
+        //    HeaderLogoButton.Click();
+        //}
     }
 }

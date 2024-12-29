@@ -14,12 +14,12 @@ namespace Bdd_TestProject.mytask.Pages
         private static By minYear = By.XPath("//*[@id='year_year_min_select']");
         private static By maxYear = By.XPath("//*[@id='year_year_max_select']");
         private static By trims = By.XPath("//*[@id='trim']//*[contains(text(), 'trims')]");
+        private ILabel noCarsFoundLabel = ElementFactory.GetLabel(By.XPath("//h3//*[contains(text(), 'No exact matches found')]"), "nothing found label");
 
         private ILabel MinYearLabel = ElementFactory.GetLabel(minYear, "min year label");
         private ILabel MaxYearLabel = ElementFactory.GetLabel(maxYear, "max year label");
         private ILabel yearLabel(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "year label");
         private ILabel trimLabel(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "trim label");
-
 
         public CarsForSaleResultsPage() : base(By.XPath("//li[contains(text(), 'Cars for Sale')]"), "Cars for sale - results page")
         {
@@ -41,6 +41,20 @@ namespace Bdd_TestProject.mytask.Pages
         {
             //*[@id='trim']//*[contains(text(), 'Pop')]
             car.Trim;
+        }
+
+        public bool IsSomethingFound()
+        {
+            return !noCarsFoundLabel.State.IsDisplayed;
+        }
+
+        public void SelectValueInMinYear(string year)
+        {
+        }
+
+        public void SelectValueInMaxYear(string year)
+        {
+            
         }
     }
 }
