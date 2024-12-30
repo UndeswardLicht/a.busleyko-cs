@@ -9,6 +9,7 @@ using TechTalk.SpecFlow;
 
 namespace Bdd_TestProject.mytask.StepDefinitions
 {
+    [Binding]
     internal class CarDescriptionPageSteps : BaseSteps
     {
         CarDescriptionPage carDescriptionPage = new();

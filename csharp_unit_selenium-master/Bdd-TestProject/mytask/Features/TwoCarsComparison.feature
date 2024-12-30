@@ -70,5 +70,5 @@ Scenario: Used car is cheaper than a brand new one of the same trim
 	And I select "2012" in Min year dropdown on in the filters on the left 
 	And I select "2012" in Max year dropdown on in the filters on the left 
 	Then At least one car is found
-	When I compare the price of the found car with the price of remembered car
+	When I retrieve the price of the found car
 	Then The price of the found used car is lower than the price of the remembered car
