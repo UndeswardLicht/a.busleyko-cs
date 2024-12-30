@@ -15,7 +15,8 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed);
         }
 
-        //TODO add saved\remembered object\price here
+        //TODO how to make this step work when
+        //we compare two objects properties - carA and carB let's say
         [Then("The price for the carA is the same as it was remembered")]
         public void IsPriceTheSame()
         {

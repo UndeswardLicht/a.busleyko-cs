@@ -11,21 +11,20 @@ namespace Bdd_TestProject.mytask.Pages
 {
     internal class CarsForSalePage : BaseForm
     {
-        private static By StockType = By.XPath("//*[@id='make-model-search-stocktype']");
-        private static By Make = By.XPath("//*[@id='makes");
-        private static By Model = By.XPath("//*[@id='models']");
-        private static By Price = By.XPath("//*[@id='make-model-max-price']");
-        private static By Distance = By.XPath("//*[@id='make-model-maximum-distance']");
-        private static By Zip = By.XPath("//*[@id='make-model-zip']");
-        private static By SearchButton = By.XPath("//*[@id='panel-3']//spark-button");
-
-        private ILabel stockTypeLabel = ElementFactory.GetLabel(StockType, "Stock Type label");
-        private ILabel makeLabel = ElementFactory.GetLabel(Make, "Make label");
-        private ILabel modelLabel = ElementFactory.GetLabel(Model, "Model label");
-        private ILabel priceLabel = ElementFactory.GetLabel(Price, "Stock Type label");
-        private ILabel distanceLabel = ElementFactory.GetLabel(Distance, "Distance label");
-        private ILabel searchButtonLabel = ElementFactory.GetLabel(SearchButton, "Search button label");
-        private ILabel zipInputLabel = ElementFactory.GetLabel(Zip, "ZIP input fiel label");
+        private ILabel stockTypeLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='make-model-search-stocktype']"), "Stock Type label");
+        private ILabel makeLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='makes"), "Make label");
+        private ILabel modelLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='models']"), "Model label");
+        private ILabel priceLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='make-model-max-price']"), "Price label");
+        private ILabel distanceLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='make-model-maximum-distance']"), "Distance label");
+        private ILabel searchButtonLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='panel-3']//spark-button"), "Search button label");
+        private ILabel zipInputLabel = ElementFactory.GetLabel(
+            By.XPath("//*[@id='make-model-zip']"), "ZIP input fiel label");
 
         private ILabel label(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "label");
 

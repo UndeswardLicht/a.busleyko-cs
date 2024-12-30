@@ -6,16 +6,15 @@ namespace ExampleProject.mytask.Pages
 {
     internal class YourCarComparisonPage : BaseForm
     {
-        private string priceCar = "(//*[@class='price-amount'])";
+        private ILabel priceLabel(string value) => ElementFactory.GetLabel(
+                By.XPath("(//*[@class='price-amount'])" + $"[{value}]"), $"price of the {value} car");
         public YourCarComparisonPage() : base(By.XPath("//*[@class='compare-add-button-container']"), "Your car comparison")
         {
         }
 
         public string retrieveCarPrice(string whichCar)
         {
-            ILabel price = ElementFactory.GetLabel(
-                By.XPath(priceCar + $"[{whichCar}]"), $"price of the {whichCar} car");
-            return "";
+            return priceLabel(whichCar).GetText();
         }
 
     }

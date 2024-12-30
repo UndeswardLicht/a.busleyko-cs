@@ -6,9 +6,10 @@ namespace ExampleProject.mytask.Pages
 {
     internal class CarsMainPage : BaseForm
     {
-        private IButton acceptBannerButton = ElementFactory.GetButton(By.Id("onetrust-accept-btn-handler"), "Accept all on banner button");
-        private ILink reviewsPageLink = ElementFactory.GetLink(By.XPath(
-            "//header//*[@data-linkname = 'header-research']"), "Link to go to Research & Reviews page"); 
+        private IButton acceptBannerButton = ElementFactory.GetButton(
+            By.Id("onetrust-accept-btn-handler"), "Accept all on banner button");
+        private ILink reviewsPageLink = ElementFactory.GetLink(
+            By.XPath("//header//*[@data-linkname = 'header-research']"), "Link to go to Research & Reviews page"); 
 
         public CarsMainPage() : base(By.XPath("//*[contains(text(),'Popular categories')]"), "Cars - Main Page")
         {

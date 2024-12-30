@@ -10,51 +10,44 @@ namespace ExampleProject.mytask.Pages
         private string MakerPath = "//*[@data-qa='make-selector-vehicle_']";
         private string ModelPath= "//*[@data-qa='model-selector-vehicle_']";
         private string YearPath = "//*[@data-qa='year-selector-vehicle_']";
-        private IButton SeeComparisonButton = ElementFactory.GetButton(By.XPath("//spark-button[contains(text(), 'See the comparison')]"), "See comparison button");
-        private ILabel label(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "label");
+        private IButton SeeComparisonButton = ElementFactory.GetButton(
+            By.XPath("//spark-button[contains(text(), 'See the comparison')]"), "See comparison button");
+        private ILabel specificElementLabel(string value) => ElementFactory.GetLabel(
+            By.XPath($"//option[contains(text(), '{value}')]"), "label");
+
+        private ILabel dropdownLabel(string path, string whichDropdown,string whichCar) =>
+            ElementFactory.GetLabel(
+                By.XPath(path.Insert(path.Length-2, whichCar)), $"{whichDropdown} dropdown of the {whichCar}");
         public CompareCarsSideBySide() : base(By.XPath("//h1[contains(text(), 'Compare cars')]"), "Compare cars side by side")
         {   
         }
 
-        //TODO remove initialization of labels ffrom methods to the class
         public void SelectMakerInDropdown(string maker, string whichCar)
         {
-            ILabel makeCar = ElementFactory.GetLabel(
-    By.XPath(MakerPath.Insert(MakerPath.Length - 2, whichCar)), $"maker dropdown of the {whichCar} car");
-            makeCar.ClickAndWait();
-            label(maker).ClickAndWait();
+            dropdownLabel(MakerPath, "maker", whichCar).ClickAndWait();
+            specificElementLabel(maker).ClickAndWait();
         }
 
         public void SelectModelInDropdown(string model, string whichCar)
         {
-            ILabel modelCar = ElementFactory.GetLabel(
-                By.XPath(ModelPath.Insert(ModelPath.Length - 2, whichCar)), $"model dropdown of the {whichCar} car");
-            modelCar.ClickAndWait();
-            label(model).ClickAndWait();
+            dropdownLabel(ModelPath, "model", whichCar).ClickAndWait();
+            specificElementLabel(model).ClickAndWait();
         }
         public void SelectYearInDropdown(string year, string whichCar)
         {
-            ILabel yearCar = ElementFactory.GetLabel(
-               By.XPath(YearPath.Insert(YearPath.Length - 2, whichCar)), $"year dropdown of the {whichCar} car");
-            yearCar.ClickAndWait();
-            label(year).ClickAndWait();
+            dropdownLabel(YearPath, "year", whichCar).ClickAndWait();
+            specificElementLabel(year).ClickAndWait();
         }
 
         public void SelectCar(Car car, string whichCar)
         {
-            ILabel makeCar = ElementFactory.GetLabel(
-                By.XPath(MakerPath.Insert(MakerPath.Length - 2, whichCar)), $"maker dropdown of the {whichCar} car");
-            ILabel modelCar = ElementFactory.GetLabel(
-                By.XPath(ModelPath.Insert(ModelPath.Length - 2, whichCar)), $"model dropdown of the {whichCar} car");
-            ILabel yearCar = ElementFactory.GetLabel(
-                By.XPath(YearPath.Insert(YearPath.Length - 2, whichCar)), $"year dropdown of the {whichCar} car");
-            
-            makeCar.ClickAndWait();
-            label(car.Maker).ClickAndWait();
-            modelCar.ClickAndWait();
-            label(car.Model).ClickAndWait();
-            yearCar.ClickAndWait();
-            label(car.Year).ClickAndWait();
+
+            dropdownLabel(MakerPath, "maker", whichCar).ClickAndWait();
+            specificElementLabel(car.Maker).ClickAndWait();
+            dropdownLabel(ModelPath, "model", whichCar).ClickAndWait();
+            specificElementLabel(car.Model).ClickAndWait();
+            dropdownLabel(YearPath, "year", whichCar).ClickAndWait();
+            specificElementLabel(car.Year).ClickAndWait();
         }
         public void ClickSearchButton()
         {

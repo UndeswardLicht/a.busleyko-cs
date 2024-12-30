@@ -8,9 +8,6 @@ namespace ExampleProject.mytask.Pages
     internal class ModelDescriptionPage : BaseForm
     {
         private ILabel ThisTrimPrice = ElementFactory.GetLabel(By.XPath("//*[@class='price-amount']"), "price for it");
-        private IButton HeaderLogoButton = ElementFactory.GetButton(By.XPath(
-    "//*[@id='cars-global-header']//a[@class='header-logo']"), "Go to Main Header logo");
-
         public ModelDescriptionPage() : base(By.XPath("//*[@id='change-trim-popover']"), "Specific car model page")
         {
         }
@@ -21,14 +18,11 @@ namespace ExampleProject.mytask.Pages
             return someCar;
         }
 
-        public string GetPriceOfThisCar()
+        public int GetPriceOfThisCar()
         {
-            return ThisTrimPrice.Text;
+            int.TryParse(ThisTrimPrice.Text.Replace("$", string.Empty), out int price);
+            return price;
         }
 
-        //public void GoToMain()
-        //{
-        //    HeaderLogoButton.Click();
-        //}
     }
 }

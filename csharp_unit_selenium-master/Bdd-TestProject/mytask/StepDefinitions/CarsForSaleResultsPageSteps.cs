@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Bdd_TestProject.mytask.Models;
 using Bdd_TestProject.mytask.Pages;
-using ExampleProject.mytask.Pages;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 
@@ -13,6 +8,13 @@ namespace Bdd_TestProject.mytask.StepDefinitions
     [Binding]
     internal class CarsForSaleResultsPageSteps : BaseSteps
     {
+        private readonly CarData carData;
+        public CarsForSaleResultsPageSteps(CarData carData)
+        {
+            this.carData = carData;
+        }
+        private int priceOfFoundCar;
+
         private CarsForSaleResultsPage carsForSaleResults = new();
 
         [Then ("Cars for Sale results page is displayed")]
@@ -27,11 +29,10 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             ClassicAssert.IsTrue(carsForSaleResults.IsSomethingFound());
         }
 
-        //todo to work with remembered value
         [When("I check the checkbox with the remembered trim in the filters on the left")]
-        public void CheckTheRememberedTrimInCheckbox(string trim)
+        public void CheckTheRememberedTrimInCheckbox()
         {
-            carsForSaleResults.SelectSameTrim(trim);
+            carsForSaleResults.SelectSameTrim(carData.TrimName);
         }
 
         [When("I select '(.*)' in Min year dropdown on in the filters on the left ")]
@@ -49,15 +50,13 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [When("I retrieve the price of the found car")]
         public void RetriecePricesOfFoundCar()
         {
-            carsForSaleResults.RetrieveFirstFoundCarPrice();
+            priceOfFoundCar = carsForSaleResults.RetrieveFirstFoundCarPrice();
         }
 
-        //todo add prices
         [Then("The price of the found used car is lower than the price of the remembered car")]
         public void ComparePricesOfFoundAndSavedCars()
         {
-            ScenarioContext.Current["Price"] = 0;
-            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper());
+            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, carData.Price));
         }
     }
 }
