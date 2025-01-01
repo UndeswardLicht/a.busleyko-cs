@@ -14,7 +14,8 @@ namespace ExampleProject.mytask.Pages
 
         public Car AddCarDetails(Car someCar)
         {
-            someCar.Price= ThisTrimPrice.Text;
+            int.TryParse(ThisTrimPrice.Text.Replace("$", string.Empty), out int price);
+            someCar.Price = price;
             return someCar;
         }
 

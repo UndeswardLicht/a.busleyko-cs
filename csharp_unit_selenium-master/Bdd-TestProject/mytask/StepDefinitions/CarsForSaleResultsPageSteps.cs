@@ -1,5 +1,6 @@
 ﻿using Bdd_TestProject.mytask.Models;
 using Bdd_TestProject.mytask.Pages;
+using ExampleProject.mytask.Models;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 
@@ -8,11 +9,6 @@ namespace Bdd_TestProject.mytask.StepDefinitions
     [Binding]
     internal class CarsForSaleResultsPageSteps : BaseSteps
     {
-        private readonly CarData carData;
-        public CarsForSaleResultsPageSteps(CarData carData)
-        {
-            this.carData = carData;
-        }
         private int priceOfFoundCar;
 
         private CarsForSaleResultsPage carsForSaleResults = new();
@@ -29,19 +25,19 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             ClassicAssert.IsTrue(carsForSaleResults.IsSomethingFound());
         }
 
-        [When("I check the checkbox with the remembered trim in the filters on the left")]
-        public void CheckTheRememberedTrimInCheckbox()
+        [When(@"I check the checkbox with the trim of the remembered '(.*)' in the filters on the left")]
+        public void CheckTheRememberedTrimInCheckbox(string carName)
         {
-            carsForSaleResults.SelectSameTrim(carData.TrimName);
+            carsForSaleResults.SelectSameTrim(Store.Get<Car>(carName).Trim);
         }
 
-        [When("I select '(.*)' in Min year dropdown on in the filters on the left ")]
+        [When(@"I select '(.*)' in Min year dropdown on in the filters on the left ")]
         public void SelectValueInMinYearDropdown(string minYear)
         {
             carsForSaleResults.SelectMinYear(minYear);
         }
 
-        [When("I select '(.*)' in Max year dropdown on in the filters on the left ")]
+        [When(@"I select '(.*)' in Max year dropdown on in the filters on the left ")]
         public void SelectValueInMaxYearDropdown(string maxYear)
         {
             carsForSaleResults.SelectMaxYear(maxYear);
@@ -53,10 +49,11 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             priceOfFoundCar = carsForSaleResults.RetrieveFirstFoundCarPrice();
         }
 
-        [Then("The price of the found used car is lower than the price of the remembered car")]
-        public void ComparePricesOfFoundAndSavedCars()
+        [Then(@"The price of the found used car is lower than the price of the remembered '(.*)'")]
+        public void ComparePricesOfFoundAndSavedCars(string carName)
         {
-            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, carData.Price));
+            int priceOfSavedCar = (int)Store.Get<Car>(carName).Price;
+            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, priceOfSavedCar));
         }
     }
 }

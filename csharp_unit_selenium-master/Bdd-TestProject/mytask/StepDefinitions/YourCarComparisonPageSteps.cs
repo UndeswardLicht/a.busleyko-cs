@@ -1,4 +1,6 @@
-﻿using ExampleProject.mytask.Pages;
+﻿using Bdd_TestProject.mytask.Models;
+using ExampleProject.mytask.Models;
+using ExampleProject.mytask.Pages;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 
@@ -15,12 +17,12 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed);
         }
 
-        //TODO how to make this step work when
-        //we compare two objects properties - carA and carB let's say
-        [Then("The price for the carA is the same as it was remembered")]
-        public void IsPriceTheSame()
+        [Then(@"The price for the '(.*)' car is the same as it was remembered for the '(.*)'")]
+        public void IsPriceTheSame(string whichCar ,string carName)
         {
-            ClassicAssert.AreEqual();
+            int? priceOfSavedCar = Store.Get<Car>(carName).Price;
+            int princeOnThePage = yourCarComparisonPage.retrieveCarPrice(whichCar);
+            ClassicAssert.IsTrue(priceOfSavedCar == princeOnThePage);
         }
 
     }

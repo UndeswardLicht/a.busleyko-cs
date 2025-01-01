@@ -1,4 +1,6 @@
-﻿using ExampleProject.mytask.Pages;
+﻿using Bdd_TestProject.mytask.Models;
+using ExampleProject.mytask.Models;
+using ExampleProject.mytask.Pages;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 
@@ -15,22 +17,25 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             ClassicAssert.IsTrue(researchAndReviewsPage.State.IsDisplayed);
         }
 
-        [When("I select '(.*)' in Make dropdown")]
-        public void SelectValueInMakeDropdown(string value)
+        [When(@"I select '(.*)' in Make dropdown as '(.*)'")]
+        public void SelectValueInMakeDropdown(string value, string carName)
         {
             researchAndReviewsPage.SelectSpecificMakerInCombobox(value);
+            Store.Get<Car>(carName).Maker = value;
         }
 
-        [When("I select '(.*)' in Model dropdown")]
-        public void SelectValueInModelDropdown(string value)
+        [When(@"I select '(.*)' in Model dropdown as '(.*)'")]
+        public void SelectValueInModelDropdown(string value, string carName)
         {
             researchAndReviewsPage.SelectSpecificModelInCombobox(value);
+            Store.Get<Car>(carName).Model = value;
         }
 
-        [When("I select '(.*)' in Year dropdown")]
-        public void SelectValueInYearDropdown(string value)
+        [When(@"I select '(.*)' in Year dropdown as '(.*)'")]
+        public void SelectValueInYearDropdown(string value, string carName)
         {
             researchAndReviewsPage.SelectSpecificYearInCombobox(value);
+            Store.Get<Car>(carName).Year = value;
         }
 
         [When("Click Research button")]

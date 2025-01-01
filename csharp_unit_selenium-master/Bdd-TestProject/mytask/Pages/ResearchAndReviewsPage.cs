@@ -4,7 +4,6 @@ using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
 using ExampleProject.mytask.Models;
 using Bdd_TestProject.mytask.Pages;
-using System.Runtime.ConstrainedExecution;
 
 namespace ExampleProject.mytask.Pages
 {
@@ -60,8 +59,6 @@ namespace ExampleProject.mytask.Pages
             yearCar.ClickAndWait();
             label(year).ClickAndWait();
         }
-
-
 
         //Next two methods select a random car from dropdown and return a Car object
         public Car SelectRandomCarInCombobox()

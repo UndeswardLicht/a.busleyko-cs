@@ -12,9 +12,10 @@ namespace ExampleProject.mytask.Pages
         {
         }
 
-        public string retrieveCarPrice(string whichCar)
+        public int retrieveCarPrice(string whichCar)
         {
-            return priceLabel(whichCar).GetText();
+            int.TryParse(priceLabel(whichCar).GetText().Replace("$", string.Empty), out int price);
+            return price;
         }
 
     }

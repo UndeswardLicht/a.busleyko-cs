@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aquality.Selenium.Elements.Interfaces;
-using Aquality.Selenium.Elements;
-using OpenQA.Selenium;
-using Bdd_TestProject.mytask.Pages;
+﻿using Bdd_TestProject.mytask.Pages;
 using TechTalk.SpecFlow;
 
 namespace Bdd_TestProject.mytask.StepDefinitions
 {
-    [Binding]
     internal class BaseSteps
     {
         BaseForm baseForm = new();
+
+        [Given("Accept the banner conditions to remove it")]
+        public void GoToMainAndAcceptBanner()
+        {
+            baseForm.GoToMain();
+            baseForm.ClickAcceptOnBanner();
+        }
 
         [When("I go back to Main page")]
         public void GoToMain()

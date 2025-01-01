@@ -22,7 +22,6 @@ namespace Bdd_TestProject.mytask.Pages
         public CarsForSaleResultsPage() : base(By.XPath("//li[contains(text(), 'Cars for Sale')]"), "Cars for sale - results page")
         {
         }
-
         public void SelectMinYear(string minYear)
         {
             MinYearLabel.ClickAndWait();

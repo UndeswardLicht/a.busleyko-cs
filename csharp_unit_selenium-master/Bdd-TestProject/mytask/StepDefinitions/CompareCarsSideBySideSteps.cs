@@ -20,18 +20,18 @@ namespace Bdd_TestProject.mytask.StepDefinitions
             ClassicAssert.IsTrue(compareCarsSideBySide.State.IsDisplayed);
         }
 
-        [When("I select '(.*)' in Make dropdown in '(.*)' box")]
+        [When(@"I select '(.*)' in Make dropdown in '(.*)' box")]
         public void SelectMakerInDropdown(string maker, string whichCar)
         {
             compareCarsSideBySide.SelectMakerInDropdown(maker, whichCar);
         }
 
-        [When("I select '(.*)' in Model dropdown in '(.*)' box")]
+        [When(@"I select '(.*)' in Model dropdown in '(.*)' box")]
         public void SelectModelInDropdown(string model, string whichCar)
         {
             compareCarsSideBySide.SelectModelInDropdown(model, whichCar);
         }
-        [When("I select '(.*)' in Year dropdown in '(.*)' box")]
+        [When(@"I select '(.*)' in Year dropdown in '(.*)' box")]
         public void SelectYearInDropdown(string year, string whichCar)
         {
             compareCarsSideBySide.SelectYearInDropdown(year, whichCar);

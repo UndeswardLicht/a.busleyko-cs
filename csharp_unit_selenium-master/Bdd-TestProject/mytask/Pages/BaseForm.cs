@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Aquality.Selenium.Elements.Interfaces;
+﻿using Aquality.Selenium.Elements.Interfaces;
 using OpenQA.Selenium;
 
 namespace Bdd_TestProject.mytask.Pages
@@ -17,7 +12,8 @@ namespace Bdd_TestProject.mytask.Pages
         private ILabel carsForSaleLabel = ElementFactory.GetLabel(carsForSale, "Cars for Sale label");
         private static By headerLogo = By.XPath(headerLinks + "//ancestor::header//*[@data-linkname='header-home']");
         private ILabel headerLabel = ElementFactory.GetLabel(headerLogo, "Header main label");
-
+        private IButton acceptBannerButton = ElementFactory.GetButton(
+            By.Id("onetrust-accept-btn-handler"), "Accept all on banner button");
         public BaseForm() : base(By.XPath(headerLinks), "Cars-Global Header")
         {
         }
@@ -37,6 +33,11 @@ namespace Bdd_TestProject.mytask.Pages
         public void GoToCarsForSale()
         {
             carsForSaleLabel.Click();
+        }
+
+        public void ClickAcceptOnBanner()
+        {
+            acceptBannerButton.Click();
         }
     }
 }
