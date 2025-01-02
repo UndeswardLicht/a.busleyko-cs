@@ -39,5 +39,10 @@ namespace Bdd_TestProject.mytask.Pages
         {
             acceptBannerButton.Click();
         }
+
+        public void ScrollDownABit()
+        {
+            ScrollBy(-50, 0);
+        }
     }
 }

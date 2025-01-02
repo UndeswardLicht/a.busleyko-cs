@@ -8,7 +8,7 @@ namespace ExampleProject.mytask.Pages
     {
         private readonly ILink FirstTrimLink = ElementFactory.GetLink(
     By.XPath("//*[@data-linkname='research-mmyt']"), "The very first trim");
-        public CarDescriptionPage() : base(By.XPath("//*[contains(text(),'Change year or car']"), "Selected car page")
+        public CarDescriptionPage() : base(By.XPath("//*[contains(text(),'Change year or car')]"), "Selected car page")
         {
         }
         public bool CheckTrims()

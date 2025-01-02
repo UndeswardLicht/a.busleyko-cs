@@ -8,7 +8,7 @@ namespace Bdd_TestProject.mytask.Pages
         private ILabel stockTypeLabel = ElementFactory.GetLabel(
             By.XPath("//*[@id='make-model-search-stocktype']"), "Stock Type label");
         private ILabel makeLabel = ElementFactory.GetLabel(
-            By.XPath("//*[@id='makes"), "Make label");
+            By.XPath("//*[@id='makes']"), "Make label");
         private ILabel modelLabel = ElementFactory.GetLabel(
             By.XPath("//*[@id='models']"), "Model label");
         private ILabel priceLabel = ElementFactory.GetLabel(

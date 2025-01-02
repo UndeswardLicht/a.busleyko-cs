@@ -7,13 +7,13 @@ using TechTalk.SpecFlow;
 namespace Bdd_TestProject.mytask.StepDefinitions
 {
     [Binding]
-    internal class CarsForSaleResultsPageSteps : BaseSteps
+    internal class CarsForSaleResultsPageSteps
     {
         private int priceOfFoundCar;
 
         private CarsForSaleResultsPage carsForSaleResults = new();
 
-        [Then ("Cars for Sale results page is displayed")]
+        [Then("Cars for Sale results page is displayed")]
         public void IsResultPageDisplayed()
         {
             ClassicAssert.IsTrue(carsForSaleResults.State.IsDisplayed);
@@ -27,7 +27,8 @@ namespace Bdd_TestProject.mytask.StepDefinitions
 
         [When(@"I check the checkbox with the trim of the remembered '(.*)' in the filters on the left")]
         public void CheckTheRememberedTrimInCheckbox(string carName)
-        {
+        { 
+            carsForSaleResults.ScrollBy(0, 800);
             carsForSaleResults.SelectSameTrim(Store.Get<Car>(carName).Trim);
         }
 

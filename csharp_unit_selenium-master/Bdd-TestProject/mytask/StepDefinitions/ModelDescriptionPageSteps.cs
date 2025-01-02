@@ -7,7 +7,7 @@ using TechTalk.SpecFlow;
 namespace Bdd_TestProject.mytask.StepDefinitions
 {
     [Binding]
-    internal class ModelDescriptionPageSteps : BaseSteps
+    internal class ModelDescriptionPageSteps
     {
         ModelDescriptionPage modelDescriptionPage = new();
 
