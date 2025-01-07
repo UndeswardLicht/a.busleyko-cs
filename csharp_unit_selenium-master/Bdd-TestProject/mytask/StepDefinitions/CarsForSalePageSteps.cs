@@ -12,7 +12,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Cars for Sale page is displayed")]
         public void IsCarsForSaleDisplayed()
         {
-            ClassicAssert.IsTrue(carsForSalePage.State.IsDisplayed);
+            ClassicAssert.IsTrue(carsForSalePage.State.IsDisplayed, "Cars for Sale page is not displayed");
         }
 
         [When(@"I select '(.*)' in Stock Type dropdown on Cars for Sale page")]

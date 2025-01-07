@@ -16,13 +16,13 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Cars for Sale results page is displayed")]
         public void IsResultPageDisplayed()
         {
-            ClassicAssert.IsTrue(carsForSaleResults.State.IsDisplayed);
+            ClassicAssert.IsTrue(carsForSaleResults.State.IsDisplayed, "Cars for Sale results page is not displayed");
         }
 
         [Then("At least one car is found")]
         public void IsOneCarFound()
         {
-            ClassicAssert.IsTrue(carsForSaleResults.IsSomethingFound());
+            ClassicAssert.IsTrue(carsForSaleResults.IsSomethingFound(), "No car is found");
         }
 
         [When(@"I check the checkbox with the trim of the remembered '(.*)' in the filters on the left")]
@@ -54,7 +54,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         public void ComparePricesOfFoundAndSavedCars(string carName)
         {
             int priceOfSavedCar = (int)Store.Get<Car>(carName).Price;
-            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, priceOfSavedCar));
+            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, priceOfSavedCar), "Price of the found car is higher!");
         }
     }
 }

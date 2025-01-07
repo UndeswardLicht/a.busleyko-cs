@@ -4,42 +4,42 @@ Background:
 	Given Accept the banner conditions to remove it
 
 Scenario: Two trims don't change their properties when compared side by 
-	When I go to Research & Reviews page
-	Then Research & Reviews page is displayed
-	When I select 'FIAT' in Make dropdown as 'carA'
-	And I select '500' in Model dropdown as 'carA'
-	And I select '2012' in Year dropdown as 'carA'
-	And Click Research button
-	Then Car description page is displayed
-	When I select the very first trim of the car
-	Then Model description page is displayed
-	And The price for that model of the 'carA' is remembered
+            When I go to Research & Reviews page
+            Then Research & Reviews page is displayed
+            When I select 'FIAT' in Make dropdown as 'carA'
+            And I select '500' in Model dropdown as 'carA'
+            And I select '2012' in Year dropdown as 'carA'
+            And Click Research button
+            Then Car description page is displayed
+            When I select the very first trim of the car
+            Then Model description page is displayed
+            And The price for that model of the 'carA' is remembered
 
-	When I go back to Main page
-	And I go to Research & Reviews page
-	Then Research & Reviews page is displayed
-	When I select 'BMW' in Make dropdown as 'carB'
-	And I select '128' in Model dropdown as 'carB'
-	And I select '2013' in Year dropdown as 'carB'
-	And Click Research button
-	Then Car description page is displayed
-	When I select the very first trim of the car
-	Then Model description page is displayed
-	And The price for that model of the 'carA' is remembered
+            When I go back to Main page
+            And I go to Research & Reviews page
+            Then Research & Reviews page is displayed
+            When I select 'BMW' in Make dropdown as 'carB'
+            And I select '128' in Model dropdown as 'carB'
+            And I select '2013' in Year dropdown as 'carB'
+            And Click Research button
+            Then Car description page is displayed
+            When I select the very first trim of the car
+            Then Model description page is displayed
+            And The price for that model of the 'carB' is remembered
 
-	When I go to Research & Reviews page
-	And I click Compare Cars Side-By-Side link
-	Then Compare Cars Side By Side page is displayed
-	When I select 'FIAT' in Make dropdown in '1' box
-	And I select '500' in Model dropdown in '1' box
-	And I select '2012' in Year dropdown in '1' box
-	And I select 'BMW' in Make dropdown in '2' box
-	And I select '128' in Model dropdown in '2' box
-	And I select '2013' in Year dropdown in '2' box
-	And I click See the comparison button
-	Then Your cars comparison page is displayed
-	And The price for the '1' car is the same as it was remembered for the 'carA' 
-	And The price for the '2' car is the same as it was remembered for the 'carB' 
+            When I go to Research & Reviews page
+            And I click Compare Cars Side-By-Side link
+            Then Compare Cars Side By Side page is displayed
+            When I select 'FIAT' in Make dropdown in '1' box
+            And I select '500' in Model dropdown in '1' box
+            And I select '2012' in Year dropdown in '1' box
+            When I select 'BMW' in Make dropdown in '2' box
+            And I select '128' in Model dropdown in '2' box
+            And I select '2013' in Year dropdown in '2' box
+            And I click See the comparison button
+            Then Your cars comparison page is displayed
+            And The price for the '1' car is the same as it was remembered for the 'carA' 
+            And The price for the '2' car is the same as it was remembered for the 'carB' 
 
 
 Scenario: Used car is cheaper than a brand new one of the same trim

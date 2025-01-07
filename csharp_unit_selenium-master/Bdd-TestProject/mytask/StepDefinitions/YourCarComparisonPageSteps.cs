@@ -14,15 +14,15 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Your cars comparison page is displayed")]
         public void IsComparisonPagedisplayed()
         {
-            ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed);
+            ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed, "Your cars comparison page is not displayed");
         }
 
         [Then(@"The price for the '(.*)' car is the same as it was remembered for the '(.*)'")]
         public void IsPriceTheSame(string whichCar ,string carName)
         {
             int? priceOfSavedCar = Store.Get<Car>(carName).Price;
-            int princeOnThePage = yourCarComparisonPage.retrieveCarPrice(whichCar);
-            ClassicAssert.IsTrue(priceOfSavedCar == princeOnThePage);
+            int princeOnThePage = yourCarComparisonPage.RetrieveCarPrice(whichCar);
+            ClassicAssert.IsTrue(priceOfSavedCar == princeOnThePage, "Cars prices are not the same");
         }
 
     }

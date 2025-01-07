@@ -14,7 +14,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Research & Reviews page is displayed")]
         public void IsResearchPageDisplayed()
         {
-            ClassicAssert.IsTrue(researchAndReviewsPage.State.IsDisplayed);
+            ClassicAssert.IsTrue(researchAndReviewsPage.State.IsDisplayed, "Research & Reviews page is not displayed");
         }
 
         [When(@"I select '(.*)' in Make dropdown as '(.*)'")]

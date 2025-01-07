@@ -11,10 +11,6 @@ namespace ExampleProject.mytask.Pages
         public CarDescriptionPage() : base(By.XPath("//*[contains(text(),'Change year or car')]"), "Selected car page")
         {
         }
-        public bool CheckTrims()
-        {
-            return FirstTrimLink.State.IsDisplayed;
-        }
         public void SelectFirstTrim()
         {
             FirstTrimLink.Click();

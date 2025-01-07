@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using ExampleProject.mytask.Pages;
+﻿using ExampleProject.mytask.Pages;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 
@@ -17,8 +12,9 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Compare Cars Side By Side page is displayed")]
         public void IsCompareSideBySideDisplayed()
         {
-            ClassicAssert.IsTrue(compareCarsSideBySide.State.IsDisplayed);
+            ClassicAssert.IsTrue(compareCarsSideBySide.State.IsDisplayed, "Compare Cars Side By Side page is not displayed");
         }
+
 
         [When(@"I select '(.*)' in Make dropdown in '(.*)' box")]
         public void SelectMakerInDropdown(string maker, string whichCar)

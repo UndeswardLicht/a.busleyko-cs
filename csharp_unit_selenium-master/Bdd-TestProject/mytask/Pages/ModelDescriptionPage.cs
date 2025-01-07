@@ -7,21 +7,21 @@ namespace ExampleProject.mytask.Pages
 {
     internal class ModelDescriptionPage : BaseForm
     {
-        private ILabel ThisTrimPrice = ElementFactory.GetLabel(By.XPath("//*[@class='price-amount']"), "price for it");
+        private ILabel ThisTrimPrice = ElementFactory.GetLabel(By.XPath("//*[contains(@class, 'price-amount')]"), "price for it");
         public ModelDescriptionPage() : base(By.XPath("//*[@id='change-trim-popover']"), "Specific car model page")
         {
         }
 
         public Car AddCarDetails(Car someCar)
         {
-            int.TryParse(ThisTrimPrice.Text.Replace("$", string.Empty), out int price);
+            int.TryParse(ThisTrimPrice.Text.Trim('$'), out int price);
             someCar.Price = price;
             return someCar;
         }
 
         public int GetPriceOfThisCar()
         {
-            int.TryParse(ThisTrimPrice.Text.Replace("$", string.Empty), out int price);
+            int.TryParse(ThisTrimPrice.Text.Trim('$'), out int price);
             return price;
         }
 

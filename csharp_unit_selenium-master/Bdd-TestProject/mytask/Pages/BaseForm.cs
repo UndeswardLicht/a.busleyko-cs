@@ -5,7 +5,7 @@ namespace Bdd_TestProject.mytask.Pages
 {
     internal class BaseForm : Aquality.Selenium.Forms.Form
     {
-        private static string headerLinks = "//*[@id='cars-global-header']//ul[@class='header-links']";
+        private static string headerLinks = "//*[@id='cars-global-header']//ul[contains(@class, 'header-links')]";
         private static By researchAndReviews = By.XPath(headerLinks + "//*[@data-linkname='header-research']");
         private ILabel researchAndReviewsLabel = ElementFactory.GetLabel(researchAndReviews, "Research & Reviews label");
         private static By carsForSale = By.XPath(headerLinks + "//*[@data-linkname='header-buy']");
@@ -38,11 +38,6 @@ namespace Bdd_TestProject.mytask.Pages
         public void ClickAcceptOnBanner()
         {
             acceptBannerButton.Click();
-        }
-
-        public void ScrollDownABit()
-        {
-            ScrollBy(-50, 0);
         }
     }
 }

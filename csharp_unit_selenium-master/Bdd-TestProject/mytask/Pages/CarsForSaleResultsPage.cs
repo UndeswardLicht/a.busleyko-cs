@@ -46,7 +46,7 @@ namespace Bdd_TestProject.mytask.Pages
 
         public int RetrieveFirstFoundCarPrice()
         {
-            int.TryParse(priceOfFirstFoundCar.GetText().Replace("$", string.Empty), out int price);
+            int.TryParse(priceOfFirstFoundCar.GetText().Trim('$'), out int price);
             return price;
         }
 

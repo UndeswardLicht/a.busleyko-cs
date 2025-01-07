@@ -14,7 +14,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Car description page is displayed")]
         public void IsCarDescriptionPageDisplayed()
         {
-            ClassicAssert.IsTrue(carDescriptionPage.State.IsDisplayed);
+            ClassicAssert.IsTrue(carDescriptionPage.State.IsDisplayed, "Car description page is not displayed");
         }
 
         [When(@"I remember the very first trim of the '(.*)'")]
