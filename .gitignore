@@ -399,3 +399,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /csharp_unit_selenium-master/ExampleProject/mytask/Tests/tempTest.cs
+/csharp_unit_selenium-master/Bdd-TestProject/mytask/Features/TryingFeature.feature
