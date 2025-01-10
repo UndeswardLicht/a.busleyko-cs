@@ -7,32 +7,30 @@ namespace Bdd_TestProject.mytask.StepDefinitions
     [Binding]
     internal class HeaderAndMainPageSteps
     {
-        //TODO ask here
         CarsMainPage carsMainPage = new();
-        BaseForm baseForm = new();
 
         [Given("Accept the banner conditions to remove it")]
         public void AcceptBanner()
         {
-            baseForm.ClickAcceptOnBanner();
+            carsMainPage.ClickAcceptOnBanner();
         }
 
         [When("I go back to Main page")]
         public void NavToMain()
         {
-            baseForm.GoToMain();
+            carsMainPage.GoToMain();
         }
 
         [When("I go to Research & Reviews page")]
         public void NavToReviews()
         {
-            baseForm.GoToResearchAndReviews();
+            carsMainPage.GoToResearchAndReviews();
         }
 
         [When("I go to Cars for Sale page")]
         public void NavToCarsForSale()
         {
-            baseForm.GoToCarsForSale();
+            carsMainPage.GoToCarsForSale();
         }
     }
 }

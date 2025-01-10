@@ -19,10 +19,6 @@ namespace Bdd_TestProject.mytask
             browser.Maximize();
             browser.GoTo(url);
             browser.WaitForPageToLoad();
-            Car carA = new Car();
-            Car carB = new Car();
-            Store.Put("carA", ref carA);
-            Store.Put("carB", ref carB);
         }
 
         [AfterScenario]

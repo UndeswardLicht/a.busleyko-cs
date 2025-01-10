@@ -5,7 +5,7 @@
         public string? Maker { get; set; }
         public string? Model { get; set; }
         public string? Year { get; set; }
-        public int? Price { get; set; }
+        public float? Price { get; set; }
         public string? Trim { get; set; }
 
         public Car(string maker, string model, string year)

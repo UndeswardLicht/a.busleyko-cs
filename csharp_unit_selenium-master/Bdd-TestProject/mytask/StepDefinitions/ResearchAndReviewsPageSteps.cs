@@ -49,5 +49,23 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         {
             researchAndReviewsPage.ClickForComparison();
         }
+
+        [When(@"I select '(.*)' in Make dropdown")]
+        public void SelectValueInMakeDropdownWithoutCar(string value)
+        {
+            researchAndReviewsPage.SelectSpecificMakerInCombobox(value);
+        }
+
+        [When(@"I select '(.*)' in Model dropdown")]
+        public void SelectValueInModelDropdownWithoutCar(string value)
+        {
+            researchAndReviewsPage.SelectSpecificModelInCombobox(value);
+        }
+
+        [When(@"I select '(.*)' in Year dropdown")]
+        public void SelectValueInYearDropdownWithoutCar(string value)
+        {
+            researchAndReviewsPage.SelectSpecificYearInCombobox(value);
+        }
     }
 }

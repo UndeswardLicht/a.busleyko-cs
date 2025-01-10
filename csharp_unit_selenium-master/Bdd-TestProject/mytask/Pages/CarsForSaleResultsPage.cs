@@ -7,15 +7,19 @@ namespace Bdd_TestProject.mytask.Pages
     internal class CarsForSaleResultsPage : BaseForm
     {
         private ILabel noCarsFoundLabel = ElementFactory.GetLabel(
-            By.XPath("//h3//*[contains(text(), 'No exact matches found')]"), "nothing found label");
+            By.XPath("//*[contains(@class, 'total-filter-count') and contains(text(), '0 matches')]"), "nothing found label");
         private ILabel MinYearLabel = ElementFactory.GetLabel(
             By.XPath("//*[@id='year_year_min_select']"), "min year label");
         private ILabel MaxYearLabel = ElementFactory.GetLabel(
             By.XPath("//*[@id='year_year_max_select']"), "max year label");
         private ILabel yearLabel(string value) => ElementFactory.GetLabel(
             By.XPath($"//option[contains(text(), '{value}')]"), "year label");
+
         private ICheckBox trimCheckBox(string value) => ElementFactory.GetCheckBox(
             By.XPath($"//*[@id='trim']//*[contains(text(), '{value}')]//preceding-sibling::input"), "trim chckbox");
+        private ILabel trimLabel(string value) => ElementFactory.GetLabel(
+            By.XPath($"//*[@class='sds-checkbox']//*[contains(text(), '{value}')]"), "trim chckbox");
+
         private ILabel priceOfFirstFoundCar = ElementFactory.GetLabel(
             By.XPath("(//*[@data-qa='primary-price'])[1]"), "price of the first found car label");
         
@@ -36,7 +40,7 @@ namespace Bdd_TestProject.mytask.Pages
 
         public void SelectSameTrim(string value)
         {
-            trimCheckBox(value).Check();
+            trimLabel(value).JsActions.Click();
         }
 
         public bool IsSomethingFound()
@@ -44,13 +48,13 @@ namespace Bdd_TestProject.mytask.Pages
             return !noCarsFoundLabel.State.IsDisplayed;
         }
 
-        public int RetrieveFirstFoundCarPrice()
+        public float RetrieveFirstFoundCarPrice()
         {
-            int.TryParse(priceOfFirstFoundCar.GetText().Trim('$'), out int price);
-            return price;
+            string s = priceOfFirstFoundCar.GetText().Trim('$');
+            return Single.Parse(s);
         }
 
-        public bool IsFoundCarCheaper(int foundCar, int savedCar)
+        public bool IsFoundCarCheaper(float foundCar, float savedCar)
         {
             return foundCar < savedCar;
         }

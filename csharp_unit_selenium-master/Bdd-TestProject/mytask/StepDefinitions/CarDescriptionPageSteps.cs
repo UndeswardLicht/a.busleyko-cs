@@ -1,4 +1,5 @@
-﻿using Bdd_TestProject.mytask.Models;
+﻿using Aquality.Selenium.Configurations;
+using Bdd_TestProject.mytask.Models;
 using ExampleProject.mytask.Models;
 using ExampleProject.mytask.Pages;
 using NUnit.Framework.Legacy;
@@ -14,7 +15,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Car description page is displayed")]
         public void IsCarDescriptionPageDisplayed()
         {
-            ClassicAssert.IsTrue(carDescriptionPage.State.IsDisplayed, "Car description page is not displayed");
+            ClassicAssert.IsTrue(carDescriptionPage.State.WaitForDisplayed(new TimeSpan(0, 0, 15)), "Car description page is not displayed");
         }
 
         [When(@"I remember the very first trim of the '(.*)'")]

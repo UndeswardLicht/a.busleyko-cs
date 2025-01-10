@@ -19,10 +19,10 @@ namespace ExampleProject.mytask.Pages
             return someCar;
         }
 
-        public int GetPriceOfThisCar()
+        public float GetPriceOfThisCar()
         {
-            int.TryParse(ThisTrimPrice.Text.Trim('$'), out int price);
-            return price;
+            string s = ThisTrimPrice.Text.Trim('$');
+            return Single.Parse(s);
         }
 
     }

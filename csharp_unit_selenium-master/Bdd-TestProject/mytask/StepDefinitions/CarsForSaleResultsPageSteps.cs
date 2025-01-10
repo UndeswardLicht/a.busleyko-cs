@@ -9,7 +9,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
     [Binding]
     internal class CarsForSaleResultsPageSteps
     {
-        private int priceOfFoundCar;
+        private float priceOfFoundCar;
 
         private CarsForSaleResultsPage carsForSaleResults = new();
 
@@ -28,17 +28,16 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [When(@"I check the checkbox with the trim of the remembered '(.*)' in the filters on the left")]
         public void CheckTheRememberedTrimInCheckbox(string carName)
         { 
-            carsForSaleResults.ScrollBy(0, 800);
             carsForSaleResults.SelectSameTrim(Store.Get<Car>(carName).Trim);
         }
 
-        [When(@"I select '(.*)' in Min year dropdown on in the filters on the left ")]
+        [When(@"I select '(.*)' in Min year dropdown in the filters on the left")]
         public void SelectValueInMinYearDropdown(string minYear)
         {
             carsForSaleResults.SelectMinYear(minYear);
         }
 
-        [When(@"I select '(.*)' in Max year dropdown on in the filters on the left ")]
+        [When(@"I select '(.*)' in Max year dropdown in the filters on the left")]
         public void SelectValueInMaxYearDropdown(string maxYear)
         {
             carsForSaleResults.SelectMaxYear(maxYear);
@@ -53,8 +52,9 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then(@"The price of the found used car is lower than the price of the remembered '(.*)'")]
         public void ComparePricesOfFoundAndSavedCars(string carName)
         {
-            int priceOfSavedCar = (int)Store.Get<Car>(carName).Price;
-            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, priceOfSavedCar), "Price of the found car is higher!");
+            float priceOfSavedCar = (float)Store.Get<Car>(carName).Price;
+            ClassicAssert.IsTrue(carsForSaleResults.IsFoundCarCheaper(priceOfFoundCar, priceOfSavedCar),
+                "Price of the found car is higher! " + "foundcar: " + priceOfFoundCar + "savedCar:" + priceOfSavedCar);
         }
     }
 }

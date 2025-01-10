@@ -1,7 +1,6 @@
 ﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
 using Bdd_TestProject.mytask.Pages;
-using static OpenQA.Selenium.BiDi.Modules.BrowsingContext.ClipRectangle;
 
 namespace ExampleProject.mytask.Pages
 {
@@ -13,12 +12,10 @@ namespace ExampleProject.mytask.Pages
         {
         }
 
-        public int RetrieveCarPrice(string whichCar)
+        public float RetrieveCarPrice(string whichCar)
         {
-            int.TryParse(priceLabel(whichCar).GetText().Trim('$'), out int price);
-            return price;
-
-
+            string s = priceLabel(whichCar).GetText().Trim('$');
+            return Single.Parse(s);
         }
     }
 }
