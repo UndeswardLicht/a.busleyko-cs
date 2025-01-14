@@ -1,6 +1,5 @@
 ﻿using Bdd_TestProject.mytask.Models;
 using Bdd_TestProject.mytask.Pages;
-using ExampleProject.mytask.Models;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 

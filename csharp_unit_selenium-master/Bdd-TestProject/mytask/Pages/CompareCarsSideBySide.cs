@@ -1,9 +1,7 @@
 ﻿using Aquality.Selenium.Elements.Interfaces;
-using Bdd_TestProject.mytask.Pages;
-using ExampleProject.mytask.Models;
 using OpenQA.Selenium;
 
-namespace ExampleProject.mytask.Pages
+namespace Bdd_TestProject.mytask.Pages
 {
     internal class CompareCarsSideBySide : BaseForm
     {
@@ -13,8 +11,9 @@ namespace ExampleProject.mytask.Pages
 
         private IButton SeeComparisonButton = ElementFactory.GetButton(
             By.XPath("//spark-button[contains(text(), 'See the comparison')]"), "See comparison button");
-        private ILabel specificElementLabel(string value, string whichCar) => ElementFactory.GetLabel(
-            By.XPath($"(*//option[contains(text(), '{value}')])[{whichCar}]"), "label");
+
+        private ILabel anotherDropdownOptions(string val, string whichCar) => ElementFactory.GetLabel(
+            By.XPath($"(//*[@id='vehicle_picker_vehicle_index'])[{whichCar}]/parent::form//option[contains(text(), '{val}')]"), "label");
         private ILabel dropdownLabel(string path, string whichDropdown,string whichCar) =>
             ElementFactory.GetLabel(
                 By.XPath(path.Insert(path.Length-2, whichCar)), $"{whichDropdown} dropdown of the {whichCar}, its XPATH: {path.Insert(path.Length - 2, whichCar)}");
@@ -25,20 +24,19 @@ namespace ExampleProject.mytask.Pages
         public void SelectMakerInDropdown(string maker, string whichCar)
         {
             dropdownLabel(MakerPath, "maker", whichCar).ClickAndWait();
-            specificElementLabel(maker, whichCar).ClickAndWait();
+            anotherDropdownOptions(maker, whichCar).ClickAndWait();
         }
 
         public void SelectModelInDropdown(string model, string whichCar)
         {
 
-            dropdownLabel(ModelPath, "model", whichCar).
-                ClickAndWait();
-            specificElementLabel(model, whichCar).ClickAndWait();
+            dropdownLabel(ModelPath, "model", whichCar).ClickAndWait();
+            anotherDropdownOptions(model, whichCar).ClickAndWait();
         }
         public void SelectYearInDropdown(string year, string whichCar)
         {
             dropdownLabel(YearPath, "year", whichCar).ClickAndWait();
-            specificElementLabel(year, whichCar).ClickAndWait();
+            anotherDropdownOptions(year, whichCar).ClickAndWait();
         }
         public void ClickSearchButton()
         {

@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using Bdd_TestProject.mytask.Models;
-using ExampleProject.mytask.Models;
+﻿using Bdd_TestProject.mytask.Models;
 using TechTalk.SpecFlow;
 
 namespace Bdd_TestProject.mytask.StepDefinitions

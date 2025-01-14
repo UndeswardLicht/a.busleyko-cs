@@ -14,9 +14,6 @@ namespace Bdd_TestProject.mytask.Pages
             By.XPath("//*[@id='year_year_max_select']"), "max year label");
         private ILabel yearLabel(string value) => ElementFactory.GetLabel(
             By.XPath($"//option[contains(text(), '{value}')]"), "year label");
-
-        private ICheckBox trimCheckBox(string value) => ElementFactory.GetCheckBox(
-            By.XPath($"//*[@id='trim']//*[contains(text(), '{value}')]//preceding-sibling::input"), "trim chckbox");
         private ILabel trimLabel(string value) => ElementFactory.GetLabel(
             By.XPath($"//*[@class='sds-checkbox']//*[contains(text(), '{value}')]"), "trim chckbox");
 

@@ -1,7 +1,5 @@
-﻿using Aquality.Selenium.Configurations;
-using Bdd_TestProject.mytask.Models;
-using ExampleProject.mytask.Models;
-using ExampleProject.mytask.Pages;
+﻿using Bdd_TestProject.mytask.Models;
+using Bdd_TestProject.mytask.Pages;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 

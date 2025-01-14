@@ -1,5 +1,4 @@
 ﻿using Bdd_TestProject.mytask.Pages;
-using ExampleProject.mytask.Pages;
 using TechTalk.SpecFlow;
 
 namespace Bdd_TestProject.mytask.StepDefinitions

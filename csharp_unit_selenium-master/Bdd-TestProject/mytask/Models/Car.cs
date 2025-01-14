@@ -1,4 +1,4 @@
-﻿namespace ExampleProject.mytask.Models
+﻿namespace Bdd_TestProject.mytask.Models
 {
     internal class Car
     {

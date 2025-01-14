@@ -1,6 +1,5 @@
 ﻿using Bdd_TestProject.mytask.Models;
-using ExampleProject.mytask.Models;
-using ExampleProject.mytask.Pages;
+using Bdd_TestProject.mytask.Pages;
 using NUnit.Framework.Legacy;
 using TechTalk.SpecFlow;
 
@@ -14,7 +13,7 @@ namespace Bdd_TestProject.mytask.StepDefinitions
         [Then("Your cars comparison page is displayed")]
         public void IsComparisonPagedisplayed()
         {
-            ClassicAssert.IsTrue(yourCarComparisonPage.State.IsDisplayed, "Your cars comparison page is not displayed");
+            ClassicAssert.IsTrue(yourCarComparisonPage.State.WaitForDisplayed(new TimeSpan(0, 0, 15)), "Your cars comparison page is not displayed");
         }
 
         [Then(@"The price for the '(.*)' car is the same as it was remembered for the '(.*)'")]

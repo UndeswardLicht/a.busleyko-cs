@@ -1,5 +1,4 @@
 ﻿using Bdd_TestProject.mytask.Models;
-using ExampleProject.mytask.Models;
 using TechTalk.SpecFlow;
 using AQB = Aquality.Selenium.Browsers;
 using AQBS = Aquality.Selenium.Browsers.AqualityServices;

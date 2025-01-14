@@ -1,9 +1,8 @@
 ﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
-using ExampleProject.mytask.Models;
-using Bdd_TestProject.mytask.Pages;
+using Bdd_TestProject.mytask.Models;
 
-namespace ExampleProject.mytask.Pages
+namespace Bdd_TestProject.mytask.Pages
 {
     internal class ModelDescriptionPage : BaseForm
     {

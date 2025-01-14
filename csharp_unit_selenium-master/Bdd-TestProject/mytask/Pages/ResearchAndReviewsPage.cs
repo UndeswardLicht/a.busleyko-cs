@@ -1,11 +1,8 @@
-﻿using System;
-using System.Linq;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using Aquality.Selenium.Elements.Interfaces;
-using ExampleProject.mytask.Models;
-using Bdd_TestProject.mytask.Pages;
+using Bdd_TestProject.mytask.Models;
 
-namespace ExampleProject.mytask.Pages
+namespace Bdd_TestProject.mytask.Pages
 {
     internal class ResearchAndReviewsPage : BaseForm
     {
@@ -13,13 +10,15 @@ namespace ExampleProject.mytask.Pages
             By.XPath("//*[@id='panel-2']//spark-button"), "Research button");
         private ILink SideBySideComparisonLink = ElementFactory.GetLink(
             By.XPath("//*[@data-linkname='research-compare']"), "Side-By-Side Comparison");
+
         private static By MakeField = By.XPath("//*[@id='make-select']");
         private static By ModelField = By.XPath("//*[@id='model-select']");
         private static By YearField = By.XPath("//*[@id='year-select']");
         ILabel makeCar = ElementFactory.GetLabel(MakeField, "maker dropdown of the car");
         ILabel modelCar = ElementFactory.GetLabel(ModelField, "model dropdown of the car");
         ILabel yearCar = ElementFactory.GetLabel(YearField, "year dropdown of the car");
-        private ILabel label(string value) => ElementFactory.GetLabel(By.XPath($"//option[contains(text(), '{value}')]"), "label");
+        private ILabel label(string value) => ElementFactory.GetLabel(
+            By.XPath($"//option[contains(text(), '{value}')]"), "label");
 
         public ResearchAndReviewsPage() : base(By.XPath("//*[text()='Research & Reviews']"), "Research & Reviews")
         {
@@ -60,24 +59,6 @@ namespace ExampleProject.mytask.Pages
             label(year).ClickAndWait();
         }
 
-        //Next two methods select a random car from dropdown and return a Car object
-        public Car SelectRandomCarInCombobox()
-        {
-            string maker = SelectRandomElementsFromDropDown(MakeField);
-            string model = SelectRandomElementsFromDropDown(ModelField);
-            string year = SelectRandomElementsFromDropDown(YearField);
-            return new Car(maker, model, year);
-        }
-
-        private static string SelectRandomElementsFromDropDown(By dropdown)
-        {
-            Random random = new Random();
-            IComboBox drp = ElementFactory.GetComboBox(dropdown, "dropdown");
-            drp.WaitAndClick();
-            int randomInt = random.Next(1, drp.Values.Count());
-            drp.SelectByIndex(randomInt);
-            return drp.SelectedText;
-        }
         public void ClickResearchButton()
         {
             ResearchButton.Click();
